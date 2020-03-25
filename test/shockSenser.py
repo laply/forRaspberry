@@ -12,14 +12,15 @@ gpio.setup(shock_pin, gpio.IN)
 
 try :
     while True:
+
         if gpio.input(shock_pin) == 0:
-            print("no shock")
             gpio.output(led_green_pin, True)
             gpio.output(led_red_pin, False)
         else :
             print("shock")
             gpio.output(led_green_pin, False)
             gpio.output(led_red_pin, True)
+	    time.sleep(10)
 
 except KeyboardInterrupt:
 	gpio.cleanup()
