@@ -10,12 +10,14 @@ client.connect("127.30.1.14")
 topic_temp = "tcs/temp"
 topic_humid = "tcs/humid"
 topic_fire = "tcs/fire"
+topic_shork = "tcs/shork"
 
 
 # pin setting
 fire_pin = 25
 led_red = 23
 led_green = 24
+shork_pin = 27
 
 # initialize GPIO
 GPIO.setwarnings(False)
@@ -27,10 +29,12 @@ instance = dht11.DHT11(pin = 22)
 GPIO.setup(fire_pin, GPIO.IN)
 GPIO.setup(led_green, GPIO.OUT)
 GPIO.setup(led_red, GPIO.OUT)
+GPIO.setup(shork_pin, GPIO.IN)
 
 # etc
 tHCount = 0
 fireFlag = 0
+shockFlag = 0
 
 def tempHumid():
 	result = instance.read()
@@ -56,8 +60,7 @@ def tempHumid():
 		#while gpio.input(echo_pin) == 0:
 		#	pulse_start = time.time()
 
-
-def firedata():
+def fireData():
 	if GPIO.input(fire_pin) == 1:
 		GPIO.output(led_red, True)
 		GPIO.output(led_green, False)
@@ -71,14 +74,32 @@ def firedata():
 			fireFlag = 0
 
 		fireFlag += 1
+
+def shockData():
+    if gpio.input(shock_pin) == 1:
+        print("shock")
+        gpio.output(led_green_pin, True)
+        gpio.output(led_red_pin, False)
+		client.publish(topic_shork, 1)
+    else :
+        print("no shock")
+        gpio.output(led_green_pin, False)
+        gpio.output(led_red_pin, True)
+		
+		global shockFlag
+		if(shockFlag == 1000):
+			client.publish(topic_shork, 0)
+			shockFlag = 0
+
+		shockFlag += 1
+
+
 try:
 	client.loop_start()
 	while True:
 		tempHumid()
-		firedata()
-
-
-
+		fireData()
+		shockData()
 
 except KeyboardInterrupt:
 	GPIO.cleanup()

@@ -1,35 +1,25 @@
 import RPi.GPIO as gpio
 import time
 
-led_pin1 = 23
-led_pin2 = 24
+led_red_pin = 23
+led_green_pin = 24
+shock_pin = 27
 
 gpio.setmode(gpio.BCM)
-gpio.setup(led_pin1, gpio.OUT)
-gpio.setup(led_pin2, gpio.OUT)
+gpio.setup(led_red_pin, gpio.OUT)
+gpio.setup(led_green_pin, gpio.OUT)
+gpio.setup(shock_pin, gpio.IN)
 
-print("start")
-print("pin1")
-gpio.output(led_pin1, True)
-time.sleep(1)
-gpio.output(led_pin1, False)
-time.sleep(0.5)
+try :
+    while True:
+        if gpio.input(shock_pin) == 0:
+            print("no shock")
+            gpio.output(led_green_pin, True)
+            gpio.output(led_red_pin, False)
+        else :
+            print("shock")
+            gpio.output(led_green_pin, False)
+            gpio.output(led_red_pin, True)
 
-print("pin2")
-gpio.output(led_pin2, True)
-time.sleep(1)
-gpio.output(led_pin2, False)
-time.sleep(0.5)
-
-print("both")
-gpio.output(led_pin1, True)
-gpio.output(led_pin2, True)
-time.sleep(1)
-gpio.output(led_pin2, False)
-time.sleep(0.5)
-gpio.output(led_pin1, False)
-time.sleep(0.5)
-
-
-print("end")
-gpio.cleanup()
+except KeyboardInterrupt:
+	gpio.cleanup()
