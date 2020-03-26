@@ -10,14 +10,14 @@ client.connect("127.30.1.14")
 topic_temp = "tcs/temp"
 topic_humid = "tcs/humid"
 topic_fire = "tcs/fire"
-topic_shork = "tcs/shork"
+topic_shork = "tcs/shock"
 
 
 # pin setting
 fire_pin = 25
 led_red = 23
 led_green = 24
-shork_pin = 27
+shock_pin = 27
 
 # initialize GPIO
 GPIO.setwarnings(False)
@@ -29,7 +29,7 @@ instance = dht11.DHT11(pin = 22)
 GPIO.setup(fire_pin, GPIO.IN)
 GPIO.setup(led_green, GPIO.OUT)
 GPIO.setup(led_red, GPIO.OUT)
-GPIO.setup(shork_pin, GPIO.IN)
+GPIO.setup(shock_pin, GPIO.IN)
 
 # etc
 tHCount = 0
@@ -80,15 +80,14 @@ def shockData():
         print("shock")
         gpio.output(led_green_pin, True)
         gpio.output(led_red_pin, False)
-		client.publish(topic_shork, 1)
+		client.publish(topic_shock, 1)
     else :
-        print("no shock")
         gpio.output(led_green_pin, False)
         gpio.output(led_red_pin, True)
 		
 		global shockFlag
 		if(shockFlag == 1000):
-			client.publish(topic_shork, 0)
+			client.publish(topic_shock, 0)
 			shockFlag = 0
 
 		shockFlag += 1
