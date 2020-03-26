@@ -10,7 +10,7 @@ client.connect("127.30.1.14")
 topic_temp = "tcs/temp"
 topic_humid = "tcs/humid"
 topic_fire = "tcs/fire"
-topic_shork = "tcs/shock"
+topic_shock = "tcs/shock"
 topic_IR = "tcs/ir"
 
 # pin setting
