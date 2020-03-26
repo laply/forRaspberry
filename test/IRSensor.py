@@ -13,12 +13,9 @@ GPIO.setup(ir_sensor_pin, GPIO.IN)
 try :
     while True :
         if GPIO.input(ir_sensor_pin) == 0:
-            GPIO.output(s_led_green_pin, True)
-            GPIO.output(s_led_red_pin, False)
-        else :
-            GPIO.output(s_led_green_pin, False)
+	    print("out")
             GPIO.output(s_led_red_pin, True)
-	    
+
 
 
 except KeyboardInterrupt :
