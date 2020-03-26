@@ -15,8 +15,8 @@ topic_IR = "tcs/ir"
 
 # pin setting
 fire_pin = 25
-led_red = 23
-led_green = 24
+led_red_pin = 23
+led_green_pin = 24
 shock_pin = 27
 ir_sensor_pin = 16
 
@@ -28,8 +28,8 @@ GPIO.cleanup()
 # read data using pin
 instance = dht11.DHT11(pin = 22)
 GPIO.setup(fire_pin, GPIO.IN)
-GPIO.setup(led_green, GPIO.OUT)
-GPIO.setup(led_red, GPIO.OUT)
+GPIO.setup(led_green_pin, GPIO.OUT)
+GPIO.setup(led_red_pin, GPIO.OUT)
 GPIO.setup(shock_pin, GPIO.IN)
 GPIO.setup(ir_sensor_pin, GPIO.IN)
 
@@ -37,7 +37,7 @@ GPIO.setup(ir_sensor_pin, GPIO.IN)
 tHCount = 0
 fireFlag = 0
 shockFlag = 0
-IRFlag = 0 
+IRFlag = 0
 
 
 def tempHumid():
@@ -62,12 +62,10 @@ def tempHumid():
 
 def fireData():
 	if GPIO.input(fire_pin) == 1:
-		GPIO.output(led_red, True)
-		GPIO.output(led_green, False)
+		GPIO.output(led_red_pin, True)
+		GPIO.output(led_green_pin, False)
 		client.publish(topic_fire, 1)
 	else :
-		GPIO.output(led_green, True)
-		GPIO.output(led_red, False)
 		global fireFlag
 		if(fireFlag == 3000):
 			client.publish(topic_fire, 0)
@@ -76,16 +74,13 @@ def fireData():
 		fireFlag += 1
 
 def shockData():
-    if gpio.input(shock_pin) == 1:
-        print("shock")
-        gpio.output(led_green_pin, True)
-        gpio.output(led_red_pin, False)
+    	if GPIO.input(shock_pin) == 1:
+        	print("shock")
+        	GPIO.output(led_green_pin, False)
+        	GPIO.output(led_red_pin, True)
 		client.publish(topic_shock, 1)
-    else :
-        gpio.output(led_green_pin, False)
-        gpio.output(led_red_pin, True)
-
-		global shockFlag
+    	else :
+       		global shockFlag
 		if(shockFlag == 3000):
 			client.publish(topic_shock, 0)
 			shockFlag = 0
@@ -100,6 +95,8 @@ def IRData():
 
 try:
 	client.loop_start()
+	GPIO.output(led_green_pin,
+
 	while True:
 		tempHumid()
 		fireData()
