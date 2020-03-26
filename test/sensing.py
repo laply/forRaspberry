@@ -18,7 +18,6 @@ fire_pin = 25
 led_red = 23
 led_green = 24
 shock_pin = 27
-s_led_green_pin = 20
 ir_sensor_pin = 16
 
 # initialize GPIO
@@ -32,7 +31,6 @@ GPIO.setup(fire_pin, GPIO.IN)
 GPIO.setup(led_green, GPIO.OUT)
 GPIO.setup(led_red, GPIO.OUT)
 GPIO.setup(shock_pin, GPIO.IN)
-GPIO.setup(s_led_green_pin, GPIO.OUT)
 GPIO.setup(ir_sensor_pin, GPIO.IN)
 
 # etc
@@ -90,18 +88,17 @@ def shockData():
     else :
         gpio.output(led_green_pin, False)
         gpio.output(led_red_pin, True)
-		
-		global shockFlag
-		if(shockFlag == 3000):
-			client.publish(topic_shock, 0)
-			shockFlag = 0
 
-		shockFlag += 1
+	global shockFlag
+	if(shockFlag == 3000):
+		client.publish(topic_shock, 0)
+		shockFlag = 0
+
+	shockFlag += 1
 
 def IRData():
-	if GPIO.input(ir_sensor_pin) == 1 :
+	if GPIO.input(ir_sensor_pin) == 0 :
 		Print("detect")
-		GPIO.output(s_led_green_pin, True)
 		Client.publish(topic_IR, 1)
 
 

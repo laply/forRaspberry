@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
-import time 
+import time
 
-s_led_green_pin = 20
+s_led_green_pin = 21
 ir_sensor_pin = 16
 
 GPIO.setmode(GPIO.BCM)
@@ -10,7 +10,7 @@ GPIO.setup(ir_sensor_pin, GPIO.IN)
 
 try :
     while True :
-        if GPIO.input(ir_sensor_pin) == 1:
+        if GPIO.input(ir_sensor_pin) == 0:
     	    print("detect")
             GPIO.output(s_led_green_pin, True)
 
