@@ -60,10 +60,6 @@ def tempHumid():
 
 		tHCount += 1
 
-		#gpio.output(trig_pin, False)
-		#while gpio.input(echo_pin) == 0:
-		#	pulse_start = time.time()
-
 def fireData():
 	if GPIO.input(fire_pin) == 1:
 		GPIO.output(led_red, True)
@@ -89,12 +85,12 @@ def shockData():
         gpio.output(led_green_pin, False)
         gpio.output(led_red_pin, True)
 
-	global shockFlag
-	if(shockFlag == 3000):
-		client.publish(topic_shock, 0)
-		shockFlag = 0
+		global shockFlag
+		if(shockFlag == 3000):
+			client.publish(topic_shock, 0)
+			shockFlag = 0
 
-	shockFlag += 1
+		shockFlag += 1
 
 def IRData():
 	if GPIO.input(ir_sensor_pin) == 0 :
