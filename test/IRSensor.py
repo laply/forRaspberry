@@ -11,7 +11,7 @@ GPIO.setup(ir_sensor_pin, GPIO.IN)
 try :
     while True :
         if GPIO.input(ir_sensor_pin) == 1:
-    	    print("out")
+    	    print("detect")
             GPIO.output(s_led_green_pin, True)
 
 
