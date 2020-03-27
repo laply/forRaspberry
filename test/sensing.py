@@ -67,13 +67,13 @@ def fireData():
 		GPIO.output(led_red, True)
 		GPIO.output(led_green, False)
 		client.publish(topic_fire, 1)
-	else :
-		global fireFlag
-		if(fireFlag == 3000):
-			client.publish(topic_fire, 0)
-			fireFlag = 0
+#	else :
+#		global fireFlag
+#		if(fireFlag == 3000):
+#			client.publish(topic_fire, 0)
+#			fireFlag = 0
 
-		fireFlag += 1
+#		fireFlag += 1
 
 def shockData():
     if gpio.input(shock_pin) == 1:
@@ -81,13 +81,13 @@ def shockData():
         gpio.output(led_green_pin, False)
         gpio.output(led_red_pin, True)
 		client.publish(topic_shock, 1)
-    else :
-		global shockFlag
-		if(shockFlag == 3000):
-			client.publish(topic_shock, 0)
-			shockFlag = 0
+#    else :
+#		global shockFlag
+#		if(shockFlag == 3000):
+#			client.publish(topic_shock, 0)
+#			shockFlag = 0
 
-		shockFlag += 1
+#		shockFlag += 1
 
 def IRData():
 	if GPIO.input(ir_sensor_pin) == 0 :
