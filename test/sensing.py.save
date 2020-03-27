@@ -49,13 +49,11 @@ def tempHumid():
 
 		now_time = "Last valid input: " + str(datetime.datetime.now())
 		temp = "Temperature: %d C" % result.temperature
-		humid = "Humidity: %d %%" % result.humidity
-
+		humid = "Humidity: %d %%" % result.humidi
 		if(tHCount == 5):
 			client.publish(topic_temp, temp)
 			client.publish(topic_humid, humid)
 			tHCount = 0
-
 			print(now_time)
 			print(temp)
 			print(humid)
@@ -67,6 +65,13 @@ def fireData():
 		GPIO.output(led_red_pin, True)
 		GPIO.output(led_green_pin, False)
 		client.publish(topic_fire, 1)
+	else :
+		global fireFlag
+		if(fireFlag == 3000):
+			client.publish(topic_fire, 0)
+			fireFlag = 0
+
+		fireFlag += 1
 
 def shockData():
 	if GPIO.input(shock_pin) == 1:
@@ -74,6 +79,12 @@ def shockData():
 		GPIO.output(led_green_pin, False)
 		GPIO.output(led_red_pin, True)
 		client.publish(topic_shock, 1)
+	else :
+		global shockFlag
+		if(shockFlag == 3000):
+			client.publish(topic_shock, 0)
+			shockFlag = 0
+		shockFlag += 1
 
 def IRData():
 	if GPIO.input(ir_sensor_pin) == 0 :
@@ -82,18 +93,21 @@ def IRData():
 		GPIO.output(led_red_pin, True)
 		client.publish(topic_IR, 1)
 
-
 def clearButton():
-	if GPIO.input(button_pin) == 1 :
+	if GPIO.input(button_pin) == 0 :
+		print("clear")
 		GPIO.output(led_green_pin, True)
 		GPIO.output(led_red_pin, False)
 		client.publish(topic_clear, 1)
+		client.publish(topic_IR, 0)
+		client.publish(topic_shock, 0)
+		client.publish(topic_fire, 0)
 
 
 try:
 	client.loop_start()
-#	GPIO.output(led_green_pin, True)
-#	GPIO.output(led_red_pin, False)
+	GPIO.output(led_green_pin, True)
+	GPIO.output(led_red_pin, False)
 	while True:
 		tempHumid()
 		fireData()
