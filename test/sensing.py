@@ -62,11 +62,11 @@ def tempHumid():
 
 		tHCount += 1
 
-def led(i : int):
+def led(i):
 	if(i == 0):
 		GPIO.output(led_green_pin, False)
 		GPIO.output(led_red_pin, True)
-	elif(i == 1)
+	elif(i == 1):
 		GPIO.output(led_green_pin, True)
 		GPIO.output(led_red_pin, False)
 
@@ -89,7 +89,7 @@ def IRData():
 
 
 def clearButton():
-	if GPIO.input(button_pin) == 1 :
+	if GPIO.input(button_pin) == 0 :
 		client.publish(topic_fire, 0)
 		client.publish(topic_shock, 0)
 		client.publish(topic_IR, 0)
