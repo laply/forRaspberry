@@ -13,12 +13,12 @@ class Sensor :
 	def __init__(self, GPIO):
 		self.tHCount = 0 
 
-		self.dht11_instance = sensorGpio.DHT11(pin = self.all_pin[0], GPIO)
-		self.fire_instance = sensorGpio.Fire(pin = self.all_pin[1], GPIO)
-		self.shock_instance = sensorGpio.Shock(pin = self.all_pin[4], GPIO)
-		self.ir_instance = sensorGpio.IR(pin = self.all_pin[5], GPIO)
-		self.led_instance = sensorGpio.LED(pin_G = self.all_pin[3], pin_R = self.all_pin[2], GPIO)
-		self.clear_instance = sensorGpio.Button(pin = self.all_pin[6], GPIO)
+		self.dht11_instance = sensorGpio.DHT11(pin = self.all_pin[0], GPIO = GPIO)
+		self.fire_instance = sensorGpio.Fire(pin = self.all_pin[1], GPIO = GPIO)
+		self.shock_instance = sensorGpio.Shock(pin = self.all_pin[4], GPIO = GPIO)
+		self.ir_instance = sensorGpio.IR(pin = self.all_pin[5], GPIO = GPIO)
+		self.led_instance = sensorGpio.LED(pin_G = self.all_pin[3], pin_R = self.all_pin[2], GPIO = GPIO)
+		self.clear_instance = sensorGpio.Button(pin = self.all_pin[6], GPIO = GPIO)
 
 		self.led_instance.write(1)
 
@@ -29,6 +29,18 @@ class Sensor :
 		self.shockCheck()
 		self.clearButton()
 
+	
+	def getData(self):
+		if self.getflag == "start" :
+			self.sendAll()
+
+	def sendAll(self):
+			self.sending.send("temp", self.dht11_instance.lastTemp)
+			self.sending.send("humid", self.dht11_instance.lastHumid)
+			self.sending.send("fire", self.fire_instance.lastFire)
+			self.sending.send("shock", self.shock_instance.lastShock)
+			self.sending.send("ir", self.ir_instance.lastIR)
+
 	def tempHumidCheck(self):
 		result = self.dht11_instance.read()
 		if result.is_valid():
@@ -36,6 +48,9 @@ class Sensor :
 			now_time = "Last valid input: " + str(datetime.datetime.now())
 			temp = "Temperature: %d C" % result.temperature
 			humid = "Humidity: %d %%" % result.humidity
+			
+			self.dht11_instance.lastHumid = temp
+			self.dht11_instance.lastTemp = humid
 
 			if(self.tHCount == 5):
 				self.sending.send("temp", temp)
@@ -46,9 +61,6 @@ class Sensor :
 				print(temp)
 				print(humid)
 
-				# lastTHTime = now_time
-				# lastHumid = humid
-				# lastTemo = temp
 
 			self.tHCount += 1
 

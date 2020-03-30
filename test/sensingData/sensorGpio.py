@@ -18,7 +18,8 @@ class DHT11Result:
 		return self.error_code == DHT11Result.ERR_NO_ERROR
 
 class DHT11:
-	__pin = 0
+	lasthumid = ""
+	lastTemp = "" 
 
 	def __init__(self, pin, GPIO):
 		self.GPIO = GPIO
