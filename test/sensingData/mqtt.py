@@ -11,8 +11,8 @@ class Connect :
 
     def __init__(self, conIp, flag):
         print("MQTT-init")
-        self.client.connect("localhost")
         self.initToSub()
+        self.client.connect("localhost")
         self.flag = flag
 
         try:
