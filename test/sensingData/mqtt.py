@@ -13,6 +13,7 @@ class Connect :
         print("MQTT-init")
         self.initToSub()
         self.client.connect("localhost")
+        print("MQTT-connrct")
         self.flag = flag
 
         try:
@@ -24,7 +25,7 @@ class Connect :
             self.client.disconnect()
 
     def send(self, sensorName, data):
-        print("MQTT-send")
+
         num = 1
         if sensorName == "temp":
             num = 0
@@ -43,11 +44,11 @@ class Connect :
 
     def initToSub(self):
         print("MQTT-initTosub")
-        def on_connect(client, userdata, rc):
-            print("connected with result code " + str(rc))
-            print("MQTT-onConnect")
-            for i in self.getTopic :
-                self.client.subscribe(i)
+        #def on_connect(client, userdata, rc):
+        #   print("connected with result code " + str(rc))
+        print("MQTT-onConnect")
+        for i in self.getTopic :
+            self.client.subscribe(i)
 
         def on_message(client, userdata, msg):
             print("Topic: " + msg.topic + " Message: " + str(msg.payload))
@@ -59,6 +60,6 @@ class Connect :
                 elif str(msg.payload) == self.msgList[1]:
                     self.flag = self.msgList[1]
 
-        self.client.on_connect = on_connect
+#        self.client.on_connect = on_connect
         self.client.on_message = on_message
 

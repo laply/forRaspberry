@@ -57,8 +57,8 @@ class Sensor :
 				self.tHCount = 0
 
 				print(now_time)
-				print(temp)
-				print(humid)
+				print("MQTT-send - " + temp)
+				print("MQTT-send - " + humid)
 
 
 			self.tHCount += 1
@@ -67,22 +67,28 @@ class Sensor :
 		read = self.fire_instance.read()
 		if read == 1:
 			self.sending.send("fire", 1)
+			self.fire_instance.lastFire = "1"
 			self.led_instance.write(0)
-			print("fire")
+			print(datetime.datetime.now())
+			print("MQTT-send -" + "fire")
 
 	def shockCheck(self):
 		read = self.shock_instance.read()
 		if read == 1:
 			self.sending.send("shock", 1)
+			self.ir_instance.lastShock = "1"
 			self.led_instance.write(0)
-			print("shock")
+			print(str(datetime.datetime.now()))
+			print("MQTT-send - " + "shock")
 
 	def irCheck(self):
 		read = self.ir_instance.read()
 		if read == 0:
 			self.sending.send("ir", 1)
+			self.ir_instance.lastIR ="1"
 			self.led_instance.write(0)
-			print("detect")
+			print(str(datetime.datetime.now()))
+			print("MQTT-send - " + "detect")
 
 	def clearButton(self):
 		read = self.clear_instance.read()
@@ -92,7 +98,8 @@ class Sensor :
 			self.sending.send("shock", 0)
 			self.sending.send("ir", 0)
 			self.sending.send("clear", 1)
-			print("clear")
+			print(str(datetime.datetime.now()))
+			print("MQTT-send - clear")
 			self.led_instance.write(1)
 
 			self.fire_instance.lastFire = "0"
