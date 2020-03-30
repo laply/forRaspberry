@@ -29,7 +29,6 @@ class Sensor :
 		self.shockCheck()
 		self.clearButton()
 
-	
 	def getData(self):
 		if self.getflag == "start" :
 			self.sendAll()
@@ -89,10 +88,11 @@ class Sensor :
 		read = self.clear_instance.read()
 
 		if read == 0 :
-			self.sending.send("fire", 1)
-			self.sending.send("shock", 1)
-			self.sending.send("ir", 1)
+			self.sending.send("fire", 0)
+			self.sending.send("shock", 0)
+			self.sending.send("ir", 0)
 			self.sending.send("clear", 1)
+			print("clear")
 			self.led_instance.write(1)
 
 			self.fire_instance.lastFire = "0"
