@@ -1,5 +1,4 @@
 import RPi.GPIO as GPIO
-import paho.mqtt.client as mqtt
 import sensor
 
 # initialize GPIO
