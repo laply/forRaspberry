@@ -4,9 +4,9 @@ class PubSensor :
     all_topic = ["tcs/temp", "tcs/humid",  "tcs/fire", "tcs/shock", "tcs/ir", "tcs/clear"]
 	# topic_temp = "tcs/temp" // topic_humid = "tcs/humid" // topic_fire = "tcs/fire"
 	# topic_shock = "tcs/shock" // topic_IR = "tcs/ir" // topic_clear = "tcs/clear"
-    
+
     client = mqtt.Client()
-    
+
     def __init__(self, conIp):
         try:
             self.client.loop_start()
@@ -32,4 +32,4 @@ class PubSensor :
 
         self.client.publish(self.all_topic[num], data)
 
-        
+

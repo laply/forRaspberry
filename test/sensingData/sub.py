@@ -1,7 +1,7 @@
 import paho.mqtt.client as mqtt
 
 class SubSensor :
-    client = mqtt.client()
+    client = mqtt.Client()
     topic = ["tcs/com", "tcs/phone"]
 
     def __init__(self, ip):
@@ -15,14 +15,14 @@ class SubSensor :
             print("Finished-sub")
             self.client.unsubscribe(self.topic)
             self.client.disconnect()
-    
+
     def subTopic(self):
         for i in self.topic :
             self.client.subscribe(i)
-        
+
     def on_message(self, client, userdata, msg):
         print("Topic: " + msg.topic + " Message: " + str(msg.payload))
-        
+
         if msg.topic == self.topic[1] :
             if str(msg.payload) == "start" :
-                a = 1 
+                a = 1
