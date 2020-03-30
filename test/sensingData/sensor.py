@@ -10,15 +10,16 @@ class Sensor :
 
 	sending = mqtt.Connect("localhost", getflag)
 
-	dht11_instance = sensorGpio.DHT11(pin = all_pin[0])
-	fire_instance = sensorGpio.Fire(pin = all_pin[1])
-	shock_instance = sensorGpio.Shock(pin = all_pin[4])
-	ir_instance = sensorGpio.IR(pin = all_pin[5])
-	led_instance = sensorGpio.LED(pin_G = all_pin[3], pin_R = all_pin[2])
-	clear_instance = sensorGpio.Button(pin = all_pin[6])
-
-	def __init__(self):
+	def __init__(self, GPIO):
 		self.tHCount = 0 
+
+		self.dht11_instance = sensorGpio.DHT11(pin = self.all_pin[0], GPIO)
+		self.fire_instance = sensorGpio.Fire(pin = self.all_pin[1], GPIO)
+		self.shock_instance = sensorGpio.Shock(pin = self.all_pin[4], GPIO)
+		self.ir_instance = sensorGpio.IR(pin = self.all_pin[5], GPIO)
+		self.led_instance = sensorGpio.LED(pin_G = self.all_pin[3], pin_R = self.all_pin[2], GPIO)
+		self.clear_instance = sensorGpio.Button(pin = self.all_pin[6], GPIO)
+
 		self.led_instance.write(1)
 
 	def sensing(self):

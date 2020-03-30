@@ -1,6 +1,4 @@
-import RPi.GPIO as GPIO
 import time
-
 
 class DHT11Result:
 	ERR_NO_ERROR = 0
@@ -22,20 +20,21 @@ class DHT11Result:
 class DHT11:
 	__pin = 0
 
-	def __init__(self, pin):
+	def __init__(self, pin, GPIO):
+		self.GPIO = GPIO
 		self.__pin = pin
 
 	def read(self):
-		GPIO.setup(self.__pin, GPIO.OUT)
+		self.GPIO.setup(self.__pin, self.GPIO.OUT)
 
 		# send initial high
-		self.__send_and_sleep(GPIO.HIGH, 0.05)
+		self.__send_and_sleep(self.GPIO.HIGH, 0.05)
 
 		# pull down to low
-		self.__send_and_sleep(GPIO.LOW, 0.02)
+		self.__send_and_sleep(self.GPIO.LOW, 0.02)
 
 		# change to input using pull up
-		GPIO.setup(self.__pin, GPIO.IN, GPIO.PUD_UP)
+		self.GPIO.setup(self.__pin, self.GPIO.IN, self.GPIO.PUD_UP)
 
 		# collect data into an array
 		data = self.__collect_input()
@@ -62,7 +61,7 @@ class DHT11:
 		return DHT11Result(DHT11Result.ERR_NO_ERROR, the_bytes[2], the_bytes[0])
 
 	def __send_and_sleep(self, output, sleep):
-		GPIO.output(self.__pin, output)
+		self.GPIO.output(self.__pin, output)
 		time.sleep(sleep)
 
 	def __collect_input(self):
@@ -76,7 +75,7 @@ class DHT11:
 		last = -1
 		data = []
 		while True:
-			current = GPIO.input(self.__pin)
+			current = self.GPIO.input(self.__pin)
 			data.append(current)
 			if last != current:
 				unchanged_count = 0
@@ -107,7 +106,7 @@ class DHT11:
 			current_length += 1
 
 			if state == STATE_INIT_PULL_DOWN:
-				if current == GPIO.LOW:
+				if current == self.GPIO.LOW:
 					# ok, we got the initial pull down
 					state = STATE_INIT_PULL_UP
 					continue
@@ -115,7 +114,7 @@ class DHT11:
 					continue
 
 			if state == STATE_INIT_PULL_UP:
-				if current == GPIO.HIGH:
+				if current == self.GPIO.HIGH:
 					# ok, we got the initial pull up
 					state = STATE_DATA_FIRST_PULL_DOWN
 					continue
@@ -123,7 +122,7 @@ class DHT11:
 					continue
 
 			if state == STATE_DATA_FIRST_PULL_DOWN:
-				if current == GPIO.LOW:
+				if current == self.GPIO.LOW:
 					# we have the initial pull down, the next will be the data pull up
 					state = STATE_DATA_PULL_UP
 					continue
@@ -131,7 +130,7 @@ class DHT11:
 					continue
 
 			if state == STATE_DATA_PULL_UP:
-				if current == GPIO.HIGH:
+				if current == self.GPIO.HIGH:
 					# data pulled up, the length of this pull up will determine whether it is 0 or 1
 					current_length = 0
 					state = STATE_DATA_PULL_DOWN
@@ -140,7 +139,7 @@ class DHT11:
 					continue
 
 			if state == STATE_DATA_PULL_DOWN:
-				if current == GPIO.LOW:
+				if current == self.GPIO.LOW:
 					# pulled down, we store the length of the previous pull up period
 					lengths.append(current_length)
 					state = STATE_DATA_PULL_UP
@@ -203,66 +202,71 @@ class DHT11:
 		return the_bytes[0] + the_bytes[1] + the_bytes[2] + the_bytes[3] & 255
 
 class Fire:
-	def __init__(self, pin):
+	def __init__(self, pin, GPIO):
 		self.__pin = pin
 		self.lastFire ="0"
+		self.GPIO = GPIO
 		self.setting()
 
 	def setting(self):
-		GPIO.setup(self.__pin, GPIO.IN)
-
+		self.GPIO.setup(self.__pin, self.GPIO.IN)
 
 	def read(self):
-		self.lastFire = GPIO.input(self.__pin)
+		self.lastFire = self.GPIO.input(self.__pin)
 		return self.lastFire
 
 class Shock:
-	def __init__(self, pin):
+	def __init__(self, pin, GPIO):
 		self.__pin = pin
+		self.GPIO = GPIO
 		self.setting()
 
 	def setting(self):
-		GPIO.setup(self.__pin, GPIO.IN)
+		self.GPIO.setup(self.__pin, self.GPIO.IN)
 
 	def read(self):
-		self.lastShock = GPIO.input(self.__pin)
+		self.lastShock = self.GPIO.input(self.__pin)
 		return self.lastShock
+
 class IR:
-	def __init__(self, pin):
+	def __init__(self, pin, GPIO):
 		self.__pin = pin
+		self.GPIO = GPIO
 		self.setting()
 
 	def setting(self):
-		GPIO.setup(self.__pin, GPIO.IN)
+		self.GPIO.setup(self.__pin, self.GPIO.IN)
 
 	def read(self):
-		self.lastIR = GPIO.input(self.__pin)
+		self.lastIR = self.GPIO.input(self.__pin)
 		return self.lastIR
 class LED:
-	def __init__(self, pin_R, pin_G):
+	def __init__(self, pin_R, pin_G, GPIO):
+		self.GPIO = GPIO
 		self.__pin_R = pin_R
 		self.__pin_G = pin_G
 		self.setting()
 
 	def setting(self):
-		GPIO.setup(self.__pin_G, GPIO.OUT)
-		GPIO.setup(self.__pin_R, GPIO.OUT)
+		self.GPIO.setup(self.__pin_G, self.GPIO.OUT)
+		self.GPIO.setup(self.__pin_R, self.GPIO.OUT)
 
 	def write(self, i):
 		if(i == 0):
-			GPIO.output(self.__pin_G, False)
-			GPIO.output(self.__pin_R, True)
+			self.GPIO.output(self.__pin_G, False)
+			self.GPIO.output(self.__pin_R, True)
 		elif(i == 1):
-			GPIO.output(self.__pin_G, True)
-			GPIO.output(self.__pin_R, False)
+			self.GPIO.output(self.__pin_G, True)
+			self.GPIO.output(self.__pin_R, False)
 class Button:
-	def __init__(self, pin):
+	def __init__(self, pin, GPIO):
+		self.GPIO = GPIO
 		self.__pin = pin
 		self.setting()
 
 	def setting(self):
-		GPIO.setup(self.__pin, GPIO.IN)
+		self.GPIO.setup(self.__pin, self.GPIO.IN)
 
 	def read(self):
-		return GPIO.input(self.__pin)
+		return self.GPIO.input(self.__pin)
 

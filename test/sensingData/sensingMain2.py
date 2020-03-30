@@ -6,7 +6,7 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.cleanup()
 
-mainInstance = sensor.Sensor()
+mainInstance = sensor.Sensor(GPIO)
 
 def startToSensing():
 		mainInstance.sensing()
