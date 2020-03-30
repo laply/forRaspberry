@@ -39,7 +39,7 @@ class Connect :
 
         self.client.publish(self.sendTopic[num], data)
 
-    def initToSub(self):        
+    def initToSub(self):
         def on_connect(client, userdata, rc):
             print("connected with result code " + str(rc))
             for i in self.getTopic :
@@ -53,7 +53,7 @@ class Connect :
                     self.flag = self.msgList[0]
                 elif str(msg.payload) == self.msgList[1]:
                     self.flag = self.msgList[1]
-    
+
         self.client.on_connect = on_connect
         self.client.on_message = on_message
 
