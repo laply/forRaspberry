@@ -203,24 +203,20 @@ class DHT11:
 		return the_bytes[0] + the_bytes[1] + the_bytes[2] + the_bytes[3] & 255
 
 class Fire:
-	__pin = 0
-	lastFire = "0"
-
 	def __init__(self, pin):
 		self.__pin = pin
+		self.lastFire ="0"
 		self.setting()
 
 	def setting(self):
 		GPIO.setup(self.__pin, GPIO.IN)
+
 
 	def read(self):
 		self.lastFire = GPIO.input(self.__pin)
 		return self.lastFire
 
 class Shock:
-	__pin = 0
-	lastShock = "0"
-
 	def __init__(self, pin):
 		self.__pin = pin
 		self.setting()
@@ -232,9 +228,6 @@ class Shock:
 		self.lastShock = GPIO.input(self.__pin)
 		return self.lastShock
 class IR:
-	__pin = 0
-	lastIR = "0"
-
 	def __init__(self, pin):
 		self.__pin = pin
 		self.setting()
@@ -246,9 +239,6 @@ class IR:
 		self.lastIR = GPIO.input(self.__pin)
 		return self.lastIR
 class LED:
-	__pin_R = 0
-	__pin_G = 0
-
 	def __init__(self, pin_R, pin_G):
 		self.__pin_R = pin_R
 		self.__pin_G = pin_G
@@ -266,8 +256,6 @@ class LED:
 			GPIO.output(self.__pin_G, True)
 			GPIO.output(self.__pin_R, False)
 class Button:
-	__pin = 0
-
 	def __init__(self, pin):
 		self.__pin = pin
 		self.setting()

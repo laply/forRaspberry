@@ -1,17 +1,13 @@
 import sensorGpio
 import datetime
-import pub
-import sub
+import mqtt
 
 class Sensor :
-	tHCount = 0
 	all_pin = [22, 25, 24, 23, 27, 16, 26]
-	seg = 0
-	sending = pub.PubSensor("127.30.1.14")
-	getting = sub.SubSensor("localhost")
-
 	# dht11_pin = 22 / fire_pin = 25 / led_red_pin = 24 / led_green_pin = 23
 	# shock_pin = 27 / ir_sensor_pin = 16 / button_pin = 26
+
+	sending = mqtt.Connect("localhost")
 
 	dht11_instance = sensorGpio.DHT11(pin = all_pin[0])
 	fire_instance = sensorGpio.Fire(pin = all_pin[1])
@@ -21,6 +17,7 @@ class Sensor :
 	clear_instance = sensorGpio.Button(pin = all_pin[6])
 
 	def __init__(self):
+		self.tHCount = 0 
 		self.led_instance.write(1)
 
 	def sensing(self):
