@@ -3,7 +3,7 @@ import time
 
 client = mqtt.Client()
 
-def on_connect(client, userdata, rc):
+def on_connect(client, userdata,flags, rc):
 	print("connected result code " + str(rc))
 	client.subscribe("test/phone")
 
