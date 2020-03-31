@@ -8,9 +8,9 @@ class Sensor :
 	# shock_pin = 27 / ir_sensor_pin = 16 / button_pin = 26
 	getflag = ""
 
-	ip = "124.139.136.86:11083"
+	ipPort = ["115.20.144.97","11183"]  
 
-	sending = mqtt.Connect(ip, getflag)
+	sending = mqtt.Connect(ipPort, getflag)
 
 	def __init__(self, GPIO):
 		self.tHCount = 0 

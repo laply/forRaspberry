@@ -1,4 +1,4 @@
-import paho.mqtt.client as mqtt
+import paho.mqtt.client as mqttg
 
 def on_connect(client, userdata, rc):
     print("connected result code " + str(rc))

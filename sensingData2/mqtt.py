@@ -9,10 +9,10 @@ class Connect :
 
     client = mqtt.Client()
 
-    def __init__(self, conIp, flag):
+    def __init__(self, ipPort, flag):
         print("MQTT-init")
         self.initToSub()
-        self.client.connect("localhost")
+        self.client.connect(ipPort[0], ipPort[1])
         print("MQTT-connrct")
         self.flag = flag
 
