@@ -5,7 +5,7 @@ client = mqtt.Client()
 
 def on_connect(client, userdata, rc):
 	print("connected result code " + str(rc))
-	client.subscribe("tcs/test/phone")
+	client.subscribe("test/phone")
 
 def on_message(client, userdata, msg):
 	print("Topic: " + msg.topic + " Message: " + str(msg.payload))
@@ -25,10 +25,10 @@ try:
 	while True :
 		time.sleep(1)
 		print("...")
-		client.publish("tcs/test/broker", "hi")
+		client.publish("test/broker", "hi")
 
 except KeyboardInterrupt:
-    client.unsubscribe(["tcs/test/phone"])
+    client.unsubscribe(["test/phone"])
     client.loop_stop()
     client.disconnect()
     print("end_to_send")
