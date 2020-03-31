@@ -1,10 +1,10 @@
 import paho.mqtt.client as mqtt
 
 class Connect :
-    sendTopic = ["tcs/temp", "tcs/humid",  "tcs/fire", "tcs/shock", "tcs/ir", "tcs/clear"]
+    sendTopic = ["tcs/temp", "tcs/humid",  "tcs/fire", "tcs/shock", "tcs/ir", "tcs/clear", "test/broker"]
 	# topic_temp = "tcs/temp" // topic_humid = "tcs/humid" // topic_fire = "tcs/fire"
 	# topic_shock = "tcs/shock" // topic_IR = "tcs/ir" // topic_clear = "tcs/clear"
-    getTopic = ["tcs/com", "tcs/phone"]
+    getTopic = ["tcs/com", "test/phone"]
     msgList = ["start", "get"]
 
     client = mqtt.Client()
@@ -39,17 +39,21 @@ class Connect :
             num = 4
         elif sensorName == "clear":
             num = 5
+        elif sensorName == "test":
+            num = 6    
 
         self.client.publish(self.sendTopic[num], data)
 
     def initToSub(self):
         print("MQTT-initTosub")
-        #def on_connect(client, userdata, rc):
-        #   print("connected with result code " + str(rc))
+
+    def on_connect(client, userdata, flags, rc):
+	    print("connected result code " + str(rc))
         print("MQTT-onConnect")
-        #for i in self.getTopic :
-        #    self.client.subscribe(i)
-        self.client.subscribe("tcs/phone")
+        for i in self.getTopic :
+            self.client.subscribe(i)
+
+
 
         def on_message(client, userdata, msg):
             print("Topic: " + msg.topic + " Message: " + str(msg.payload))
