@@ -13,7 +13,7 @@ class Connect :
         print("MQTT-init")
         self.initToSub()
         self.client.connect(ipPort[0], ipPort[1])
-        print("MQTT-connrct")
+        print("MQTT-connect")
         self.flag = flag
 
         try:
