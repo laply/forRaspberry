@@ -6,7 +6,6 @@ class Sensor :
 	all_pin = [22, 25, 24, 23, 27, 16, 26]
 	# dht11_pin = 22 / fire_pin = 25 / led_red_pin = 24 / led_green_pin = 23
 	# shock_pin = 27 / ir_sensor_pin = 16 / button_pin = 26
-	getflag = ""
 
 	# dev server IP 
 	# ipPort = ["124.139.136.86", "1883"]  
@@ -14,7 +13,7 @@ class Sensor :
 	ipPort = ["115.20.144.97", "11183"]
 
 
-	sending = mqtt.Connect(ipPort, getflag)
+	sending = mqtt.Connect(ipPort)
 
 	def __init__(self, GPIO):
 		self.tHCount = 0
@@ -36,7 +35,7 @@ class Sensor :
 		self.clearButton()
 
 	def getData(self):
-		if self.getflag == "start" :
+		if self.sending.getFlag() == "start" :
 			self.sendAll()
 
 	def sendAll(self):

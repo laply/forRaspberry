@@ -7,14 +7,17 @@ class Connect :
     getTopic = ["tcs/com", "test/phone"]
     msgList = ["start", "get"]
 
+    Topic = ""
+    flag = ""
+
     client = mqtt.Client()
 
-    def __init__(self, ipPort, flag):
+    def __init__(self, ipPort):
         print("MQTT-init")
         self.initToSub()
         self.client.connect(ipPort[0], ipPort[1])
         print("MQTT-connect")
-        self.flag = flag
+
 
         try:
             self.client.loop_start()
@@ -23,6 +26,12 @@ class Connect :
             self.client.unsubscribe(self.getTopic)
             self.client.loop_stop()
             self.client.disconnect()
+
+    def getFlag(self):
+        return self.flag
+    
+    def setFlag(self, data):
+        self.flag = data
 
     def send(self, sensorName, data):
 
@@ -59,8 +68,7 @@ class Connect :
             print("Topic: " + msg.topic + " Message: " + str(msg.payload))
             print("MQTT-onMessage")
 
-            if msg.topic == self.getTopic[1]:
-            	self.flag = str( msg.payload )
+        	self.flag = str(msg.payload)
 
 
 	self.client.on_connect = on_connect
