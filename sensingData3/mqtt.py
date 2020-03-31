@@ -40,18 +40,18 @@ class Connect :
         elif sensorName == "clear":
             num = 5
         elif sensorName == "test":
-            num = 6    
+            num = 6
 
         self.client.publish(self.sendTopic[num], data)
 
     def initToSub(self):
         print("MQTT-initTosub")
 
-    def on_connect(client, userdata, flags, rc):
-	    print("connected result code " + str(rc))
-        print("MQTT-onConnect")
-        for i in self.getTopic :
-            self.client.subscribe(i)
+	def on_connect(client, userdata, flags, rc):
+		print("connected result code " + str(rc))
+		print("MQTT-onConnect")
+        	for i in self.getTopic :
+           		self.client.subscribe(i)
 
 
 
@@ -60,11 +60,9 @@ class Connect :
             print("MQTT-onMessage")
 
             if msg.topic == self.getTopic[1]:
-                if str(msg.payload) == self.msgList[0]:
-                    self.flag = self.msgList[0]
-                elif str(msg.payload) == self.msgList[1]:
-                    self.flag = self.msgList[1]
+            	self.flag = str( msg.payload )
 
-#        self.client.on_connect = on_connect
+
+	self.client.on_connect = on_connect
         self.client.on_message = on_message
 

@@ -8,15 +8,15 @@ class Sensor :
 	# shock_pin = 27 / ir_sensor_pin = 16 / button_pin = 26
 	getflag = ""
 
-	# dev server IP 
-	# ipPort = ["124.139.136.86", "1883"]  
+	# dev server IP
+	# ipPort = ["124.139.136.86", "1883"]
 	# test server IP
 	ipPort = ["115.20.144.97", "11183"]
 
 	sending = mqtt.Connect(ipPort, getflag)
 
 	def __init__(self, GPIO):
-		self.tHCount = 0 
+		self.tHCount = 0
 
 	def sensing(self):
 		self.getData()
@@ -34,9 +34,11 @@ class Sensor :
 			self.sending.send("fire", 0)
 			self.sending.send("shock", 0)
 			self.sending.send("ir", 0)
+			self.sending.send("test", "start")
 		elif i == 1:
 			self.sending.send("temp", 1)
 			self.sending.send("humid", 1)
 			self.sending.send("fire", 1)
 			self.sending.send("shock", 1)
 			self.sending.send("ir", 1)
+			self.sending.send("test", "get")

@@ -17,7 +17,7 @@ class Sensor :
 	sending = mqtt.Connect(ipPort, getflag)
 
 	def __init__(self, GPIO):
-		self.tHCount = 0 
+		self.tHCount = 0
 
 		self.dht11_instance = sensorGpio.DHT11(pin = self.all_pin[0], GPIO = GPIO)
 		self.fire_instance = sensorGpio.Fire(pin = self.all_pin[1], GPIO = GPIO)
