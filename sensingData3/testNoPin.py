@@ -22,8 +22,7 @@ class Sensor :
 		self.getData()
 
 	def getData(self):
-		print("flag =="+getflag)
-		if self.getflag == "start" :
+		if self.sending == "start" :
 			self.sendAll(0)
 		elif self.getflag == "get" :
 			self.sendAll(1)
