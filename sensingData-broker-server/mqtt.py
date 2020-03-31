@@ -47,8 +47,9 @@ class Connect :
         #def on_connect(client, userdata, rc):
         #   print("connected with result code " + str(rc))
         print("MQTT-onConnect")
-        for i in self.getTopic :
-            self.client.subscribe(i)
+        #for i in self.getTopic :
+        #    self.client.subscribe(i)
+        self.client.subscribe("tcs/phone")
 
         def on_message(client, userdata, msg):
             print("Topic: " + msg.topic + " Message: " + str(msg.payload))
