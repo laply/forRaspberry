@@ -20,9 +20,9 @@ client.connect("115.20.144.97", 11183, 60)
 try:
 	client.loop_start()
 	print("start")
-	client.publish("tcs/test/broker","hello")
+	client.publish("test/broker","hello")
 
-    	while True:
+	while True :
 		time.sleep(1)
 		print("...")
 		client.publish("tcs/test/broker", "hi")

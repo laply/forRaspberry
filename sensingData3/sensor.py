@@ -8,7 +8,7 @@ class Sensor :
 	# shock_pin = 27 / ir_sensor_pin = 16 / button_pin = 26
 	getflag = ""
 
-	ipPort = ["124.139.136.86","1883"]  
+	ipPort = ["124.139.136.86", "1883"]  
 
 	sending = mqtt.Connect(ipPort, getflag)
 
