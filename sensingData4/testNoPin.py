@@ -13,7 +13,7 @@ class Sensor :
 	# test server IP
 	ipPort = ["115.20.144.97", "11183"]
 	
-	cameraPort = "11091"
+	cameraPort = "11092"
 	sending = sensorTopic.SendTopic(ipPort)
 
 	def __init__(self, GPIO, localIP):
