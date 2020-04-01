@@ -13,14 +13,13 @@ class SendTopic :
     def __init__(self, ipPort):
         self.connect = Connect.connect(ipPort)
         self.initToSub()
-        
+
     def getFlag(self):
 	    return self.flag
 
     def setFlag(self, data):
         self.flag = data
 
-    #나중에 mapping 
     def send(self, sensorName, data):
         if sensorName == "temp" :
             self.connect.sendPublish(self.sendTopic[0], data)
@@ -39,16 +38,15 @@ class SendTopic :
 
     def initToSub(self):
     	print("MQTT-initTosub")
-        
-        def on_connect(client, userdata, flags, rc):
-            print("MQTT-onConnect - " + str(rc))
-		
-            for i in self.getTopic :
-			    self.connect.setSubscribe(i)
+
+	def on_connect(client, userdata, flags, rc):
+		print("MQTT-onConnect - " + str(rc))
+		for i in self.getTopic :
+			self.connect.setSubscribe(i)
 
         def on_message(client, userdata, msg):
     		print("MQTT-onMessage")
 	    	self.flag = str(msg.payload)
 
-	    self.connect.setOnConnect(on_connect)
-	    self.connect.setOnMessage(on_message)
+	self.connect.setOnConnect(on_connect)
+	self.connect.setOnMessage(on_message)
