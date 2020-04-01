@@ -33,17 +33,35 @@ class Sensor :
 		self.irCheck()
 		self.shockCheck()
 		self.clearButton()
+		self.getData()
 
 	def getData(self):
 		if self.sending.getFlag() == "start" :
-			self.sendAll()
+			self.sendAll(0)
+			self.sending.setFlag(".")
+		elif self.sending.getFlag() == "get" :
+			self.sendAll(1)
+			self.sending.setFlag(".")
 
-	def sendAll(self):
+
+	def sendAll(self, i):
+		if i == 0 :
 			self.sending.send("temp", self.dht11_instance.lastTemp)
 			self.sending.send("humid", self.dht11_instance.lastHumid)
 			self.sending.send("fire", self.fire_instance.lastFire)
 			self.sending.send("shock", self.shock_instance.lastShock)
 			self.sending.send("ir", self.ir_instance.lastIR)
+			self.sending.send("test", "send-start")
+		elif i == 1:
+			self.sending.send("temp", self.dht11_instance.lastTemp)
+			self.sending.send("humid", self.dht11_instance.lastHumid)
+			self.sending.send("fire", self.fire_instance.lastFire)
+			self.sending.send("shock", self.shock_instance.lastShock)
+			self.sending.send("ir", self.ir_instance.lastIR)
+			self.sending.send("test", "send-get")
+
+
+
 
 	def tempHumidCheck(self):
 		result = self.dht11_instance.read()

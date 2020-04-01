@@ -7,8 +7,8 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.cleanup()
 
-#mainInstance = sensor.Sensor(GPIO)
-mainInstance = testNoPin.Sensor(GPIO)
+mainInstance = sensor.Sensor(GPIO)
+#mainInstance = testNoPin.Sensor(GPIO)
 
 def startToSensing():
 		mainInstance.sensing()

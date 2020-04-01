@@ -69,4 +69,3 @@ class Connect :
 
 	self.client.on_connect = on_connect
 	self.client.on_message = on_message
-
