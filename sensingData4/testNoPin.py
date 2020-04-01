@@ -7,17 +7,12 @@ class Sensor :
 	# dht11_pin = 22 / fire_pin = 25 / led_red_pin = 24 / led_green_pin = 23
 	# shock_pin = 27 / ir_sensor_pin = 16 / button_pin = 26
 
-
-	# dev server IP
-	# ipPort = ["124.139.136.86", "1883"]
-	# test server IP
-	ipPort = ["115.20.144.97", "11183"]
-	
-	cameraPort = "11092"
-	sending = sensorTopic.SendTopic(ipPort)
-
-	def __init__(self, GPIO, localIP):
+	def __init__(self, GPIO, localIP, ipPort, cameraPort):
 		self.localIp = localIP
+		self.ipPort = ipPort
+		self.cameraPort = cameraPort
+		self.sending = sensorTopic.SendTopic(ipPort)
+
 
 	def sensing(self):
 		self.getData()
