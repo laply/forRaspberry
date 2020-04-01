@@ -22,10 +22,12 @@ class Sensor :
 		self.getData()
 
 	def getData(self):
-		if self.sending.getflag() == "start" :
+		if self.sending.getFlag() == "start" :
 			self.sendAll(0)
-		elif self.sending.getflag()  == "get" :
+			self.sending.setFlag(".")
+		elif self.sending.getFlag() == "get" :
 			self.sendAll(1)
+			self.sending.setFlag(".")
 
 	def sendAll(self, i):
 		if i == 0 :
@@ -34,11 +36,11 @@ class Sensor :
 			self.sending.send("fire", 0)
 			self.sending.send("shock", 0)
 			self.sending.send("ir", 0)
-			self.sending.send("test", "start")
+			self.sending.send("test", "send-start")
 		elif i == 1:
 			self.sending.send("temp", 1)
 			self.sending.send("humid", 1)
 			self.sending.send("fire", 1)
 			self.sending.send("shock", 1)
 			self.sending.send("ir", 1)
-			self.sending.send("test", "get")
+			self.sending.send("test", "send-get")

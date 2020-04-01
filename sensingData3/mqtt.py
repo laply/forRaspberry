@@ -13,23 +13,23 @@ class Connect :
     client = mqtt.Client()
 
     def __init__(self, ipPort):
-        print("MQTT-init")
+	print("MQTT-init")
         self.initToSub()
         self.client.connect(ipPort[0], ipPort[1])
         print("MQTT-connect")
 
 
         try:
-            self.client.loop_start()
+		self.client.loop_start()
         except KeyboardInterrupt:
-            print("Finished-connect")
-            self.client.unsubscribe(self.getTopic)
-            self.client.loop_stop()
-            self.client.disconnect()
+		print("Finished-connect")
+		self.client.unsubscribe(self.getTopic)
+		self.client.loop_stop()
+		self.client.disconnect()
 
     def getFlag(self):
-        return self.flag
-    
+	return self.flag
+
     def setFlag(self, data):
         self.flag = data
 
@@ -37,38 +37,36 @@ class Connect :
 
         num = 1
         if sensorName == "temp":
-            num = 0
+		num = 0
         elif sensorName == "humid":
-            num = 1
+		num = 1
         elif sensorName == "fire":
-            num = 2
+		num = 2
         elif sensorName == "shock":
-            num = 3
+		num = 3
         elif sensorName == "ir":
-            num = 4
+		num = 4
         elif sensorName == "clear":
-            num = 5
+		num = 5
         elif sensorName == "test":
-            num = 6
+		num = 6
 
         self.client.publish(self.sendTopic[num], data)
 
     def initToSub(self):
-        print("MQTT-initTosub")
+	print("MQTT-initTosub")
 
-	    def on_connect(client, userdata, flags, rc):
-		    print("connected result code " + str(rc))
-		    print("MQTT-onConnect")
-        	    for i in self.getTopic :
-           		    self.client.subscribe(i)
+	def on_connect(client, userdata, flags, rc):
+		print("connected result code " + str(rc))
+		print("MQTT-onConnect")
+		for i in self.getTopic :
+			self.client.subscribe(i)
 
         def on_message(client, userdata, msg):
-            print("Topic: " + msg.topic + " Message: " + str(msg.payload))
-            print("MQTT-onMessage")
-
-        	self.flag = str(msg.payload)
-
+		print("Topic: " + msg.topic + " Message: " + str(msg.payload))
+		print("MQTT-onMessage")
+		self.flag = str(msg.payload)
 
 	self.client.on_connect = on_connect
-        self.client.on_message = on_message
+	self.client.on_message = on_message
 
