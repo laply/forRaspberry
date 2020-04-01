@@ -12,7 +12,8 @@ class Sensor :
 	# ipPort = ["124.139.136.86", "1883"]
 	# test server IP
 	ipPort = ["115.20.144.97", "11183"]
-
+	
+	cameraPort = "8891"
 	sending = sensorTopic.SendTopic(ipPort)
 
 	def __init__(self, GPIO, localIP):
@@ -40,14 +41,17 @@ class Sensor :
 			self.sending.send(3, 0)
 			self.sending.send(4, 0)
 			self.sending.send(6, self.localIp)
-			self.sending.send(7, "send-start")
+			self.sending.send(7, self.cameraPort)
+			self.sending.send(8, "send-start")
 		elif i == 1:
 			self.sending.send(0, 1)
 			self.sending.send(1, 2)
 			self.sending.send(2, 3)
 			self.sending.send(3, 4)
 			self.sending.send(4, 5)
-			self.sending.send(6, self.localIp)		
-			self.sending.send(7, "send-start")
-		elif i == 2:
 			self.sending.send(6, self.localIp)	
+			self.sending.send(7, self.cameraPort)	
+			self.sending.send(8, "send-start")
+		elif i == 2:
+			self.sending.send(6, self.localIp)
+			self.sending.send(7, self.cameraPort)	
