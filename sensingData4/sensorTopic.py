@@ -1,10 +1,10 @@
 import Connect
 
 class SendTopic :
-    sendTopic = ["tcs/temp", "tcs/humid",  "tcs/fire", "tcs/shock", "tcs/ir", "tcs/clear", "tcs/localip","tcs/cameraport", "test/broker"]
+    sendTopic = ["tcs/temp", "tcs/humid",  "tcs/fire", "tcs/shock", "tcs/ir", "tcs/clear", "tcs/localip", "tcs/cameraport", "test/broker"]
 	# topic_temp = "tcs/temp" // topic_humid = "tcs/humid" // topic_fire = "tcs/fire"
 	# topic_shock = "tcs/shock" // topic_IR = "tcs/ir" // topic_clear = "tcs/clear"
-    getTopic = ["tcs/com", "test/phone"]
+    getTopic = ["tcs/com", "tcs/phone"]
 
     flag = ""
 
