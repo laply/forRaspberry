@@ -56,13 +56,11 @@ class Connect :
     def initToSub(self):
         print("MQTT-initTosub")
 
-	def on_connect(client, userdata, flags, rc):
-		print("connected result code " + str(rc))
-		print("MQTT-onConnect")
-        	for i in self.getTopic :
-           		self.client.subscribe(i)
-
-
+	    def on_connect(client, userdata, flags, rc):
+		    print("connected result code " + str(rc))
+		    print("MQTT-onConnect")
+        	    for i in self.getTopic :
+           		    self.client.subscribe(i)
 
         def on_message(client, userdata, msg):
             print("Topic: " + msg.topic + " Message: " + str(msg.payload))
