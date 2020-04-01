@@ -11,7 +11,7 @@ GPIO.cleanup()
 localGlobalIp = os.popen('curl ifconfig.me').read()
 # localIp = os.popen('hostname -I').read() ## ip
 
-cameraCheck = os.system('home/pi/raspstart/mjpg.sh')
+cameraCheck = os.system('sh /home/pi/raspstart/mjpg.sh &')
 # mainInstance = sensor.Sensor(GPIO, localGlobalIp)
 mainInstance = testNoPin.Sensor(GPIO, localGlobalIp)
 
