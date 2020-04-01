@@ -10,7 +10,7 @@ class SendTopic :
     flag = ""
 
     def __init__(self, ipPort):
-        self.connect = Connect.connect(ipPort)
+        self.connect = Connect.Connect(ipPort)
         self.initToSub()
 
     def getFlag(self):
