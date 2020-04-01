@@ -8,7 +8,7 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.cleanup()
 
-localIp = subprocess.call('hostname -I', shell=True) ## ip
+localIp = subprocess.check_call('hostname -I', shell=True) ## ip
 
 #mainInstance = sensor.Sensor(GPIO, localIP)
 mainInstance = testNoPin.Sensor(GPIO, localIp)
