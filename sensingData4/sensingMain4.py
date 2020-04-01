@@ -1,22 +1,16 @@
 import RPi.GPIO as GPIO
 import sensor
 import testNoPin # node
-import subprocess
+import os
 
 # initialize GPIO
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.cleanup()
 
-print("....")
-localIp = ""
-print("check Ip")
-while True:
-	print("....")
-	global localIp
-	localIp = subprocess.check_call('hostname -I', shell=True) ## ip
-	if localIp != "":
-		break
+
+localIp = os.popen('hostname -I').read() ## ip
+	
 
 #mainInstance = sensor.Sensor(GPIO, localIP)
 mainInstance = testNoPin.Sensor(GPIO, localIp)
