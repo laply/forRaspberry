@@ -6,7 +6,6 @@ class SendTopic :
 	# topic_shock = "tcs/shock" // topic_IR = "tcs/ir" // topic_clear = "tcs/clear"
     getTopic = ["tcs/com", "test/phone"]
 
-    Topic = ""
     flag = ""
 
     def __init__(self, ipPort):
