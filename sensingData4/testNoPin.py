@@ -15,8 +15,8 @@ class Sensor :
 
 	sending = sensorTopic.SendTopic(ipPort)
 
-	def __init__(self, GPIO):
-		self.tHCount = 0
+	def __init__(self, GPIO, localIP):
+		self.localIp = localIP
 
 	def sensing(self):
 		self.getData()
@@ -43,4 +43,4 @@ class Sensor :
 			self.sending.send("fire", 1)
 			self.sending.send("shock", 1)
 			self.sending.send("ir", 1)
-			self.sending.send("test", "send-get")
+			self.sending.send("test", self.localIp)

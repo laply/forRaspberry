@@ -15,9 +15,9 @@ class Sensor :
 
 	sending = sensorTopic.SendTopic(ipPort)
 
-	def __init__(self, GPIO):
+	def __init__(self, localIP):
 		self.tHCount = 0
-
+		self.localIp = localIP
 		self.dht11_instance = sensorGpio.DHT11(pin = self.all_pin[0], GPIO = GPIO)
 		self.fire_instance = sensorGpio.Fire(pin = self.all_pin[1], GPIO = GPIO)
 		self.shock_instance = sensorGpio.Shock(pin = self.all_pin[4], GPIO = GPIO)
@@ -58,7 +58,7 @@ class Sensor :
 			self.sending.send("fire", self.fire_instance.lastFire)
 			self.sending.send("shock", self.shock_instance.lastShock)
 			self.sending.send("ir", self.ir_instance.lastIR)
-			self.sending.send("test", "send-get")
+			self.sending.send("test", self.localIp)
 
 
 	def tempHumidCheck(self):
