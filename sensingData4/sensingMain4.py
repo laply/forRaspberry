@@ -10,9 +10,10 @@ GPIO.cleanup()
 
 
 localIp = os.popen('hostname -I').read() ## ip
-	
 
-#mainInstance = sensor.Sensor(GPIO, localIP)
+#cameraCheck = os.system('home/pi/raspstart/mjpg.sh')
+
+# mainInstance = sensor.Sensor(GPIO, localIP)
 mainInstance = testNoPin.Sensor(GPIO, localIp)
 
 def startToSensing():

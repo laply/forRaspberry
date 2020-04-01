@@ -28,19 +28,26 @@ class Sensor :
 		elif self.sending.getFlag() == "get" :
 			self.sendAll(1)
 			self.sending.setFlag(".")
+		elif self.sending.getFlag() == "localIP" :
+			self.sendAll(2)
+			self.sending.setFlag(".")	
 
 	def sendAll(self, i):
 		if i == 0 :
-			self.sending.send("temp", 0)
-			self.sending.send("humid", 0)
-			self.sending.send("fire", 0)
-			self.sending.send("shock", 0)
-			self.sending.send("ir", 0)
-			self.sending.send("test", "send-start")
+			self.sending.send(0, 0)
+			self.sending.send(1, 0)
+			self.sending.send(2, 0)
+			self.sending.send(3, 0)
+			self.sending.send(4, 0)
+			self.sending.send(5, self.localIp)
+			self.sending.send(6, "send-start")
 		elif i == 1:
-			self.sending.send("temp", 1)
-			self.sending.send("humid", 1)
-			self.sending.send("fire", 1)
-			self.sending.send("shock", 1)
-			self.sending.send("ir", 1)
-			self.sending.send("test", self.localIp)
+			self.sending.send(0, 1)
+			self.sending.send(1, 2)
+			self.sending.send(2, 3)
+			self.sending.send(3, 4)
+			self.sending.send(4, 5)
+			self.sending.send(5, self.localIp)		
+			self.sending.send(6, "send-start")
+		elif i == 2:
+			self.sending.send(5, self.localIp)	
