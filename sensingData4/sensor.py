@@ -54,16 +54,16 @@ class Sensor :
 			self.sending.send(2, self.fire_instance.lastFire)
 			self.sending.send(3, self.shock_instance.lastShock)
 			self.sending.send(4, self.ir_instance.lastIR)
-			self.sending.send(5, self.localIp)
-			self.sending.send(6, "send-start")
+			self.sending.send(6, self.localIp)
+			self.sending.send(7, "send-start")
 		elif i == 1:
 			self.sending.send(0 , self.dht11_instance.lastTemp)
 			self.sending.send(1, self.dht11_instance.lastHumid)
 			self.sending.send(2, self.fire_instance.lastFire)
 			self.sending.send(3, self.shock_instance.lastShock)
 			self.sending.send(4, self.ir_instance.lastIR)
-			self.sending.send(5, self.localIp)
-			self.sending.send(6, "send-get")
+			self.sending.send(6, self.localIp)
+			self.sending.send(7, "send-get")
 		elif i == 2:
 			self.sending.send(5, self.localIp)	
 
@@ -79,8 +79,8 @@ class Sensor :
 			self.dht11_instance.lastTemp = humid
 
 			if(self.tHCount == 5):
-				self.sending.send("temp", temp)
-				self.sending.send("humid", humid)
+				self.sending.send(0, temp)
+				self.sending.send(1, humid)
 				self.tHCount = 0
 
 				print(now_time)
@@ -93,7 +93,7 @@ class Sensor :
 	def fireCheck(self):
 		read = self.fire_instance.read()
 		if read == 1:
-			self.sending.send("fire", 1)
+			self.sending.send(2, 1)
 			self.fire_instance.lastFire = "1"
 			self.led_instance.write(0)
 			print(datetime.datetime.now())
@@ -102,7 +102,7 @@ class Sensor :
 	def shockCheck(self):
 		read = self.shock_instance.read()
 		if read == 1:
-			self.sending.send("shock", 1)
+			self.sending.send(3, 1)
 			self.ir_instance.lastShock = "1"
 			self.led_instance.write(0)
 			print(str(datetime.datetime.now()))
@@ -111,7 +111,7 @@ class Sensor :
 	def irCheck(self):
 		read = self.ir_instance.read()
 		if read == 0:
-			self.sending.send("ir", 1)
+			self.sending.send(4, 1)
 			self.ir_instance.lastIR ="1"
 			self.led_instance.write(0)
 			print(str(datetime.datetime.now()))
@@ -121,10 +121,10 @@ class Sensor :
 		read = self.clear_instance.read()
 
 		if read == 0 :
-			self.sending.send("fire", 0)
-			self.sending.send("shock", 0)
-			self.sending.send("ir", 0)
-			self.sending.send("clear", 1)
+			self.sending.send(3, 0)
+			self.sending.send(4, 0)
+			self.sending.send(5, 0)
+			self.sending.send(6, 1)
 			print(str(datetime.datetime.now()))
 			print("MQTT-send - clear")
 			self.led_instance.write(1)
