@@ -10,7 +10,6 @@ GPIO.cleanup()
 
 localGlobalIp = os.popen('curl ifconfig.me').read() ## global ip
 # localIp = os.popen('hostname -I').read() ##  local ip
-
 # dev server IP 
 # ipPort = ["124.139.136.86", "1883"]  
 # test server IP
@@ -19,7 +18,8 @@ ipPort = ["115.20.144.97", "11183"]
 #local port "8891"
 cameraPort = "11092"
 
-cameraCheck = os.system('/home/pi/raspstart/mjpg.sh') ##
+cameraCheck = os.system('sh /home/pi/raspstart/mjpg.sh &') ##
+
 # Can Use GPIO
 # mainInstance = sensor.Sensor(GPIO, localGlobalIp)
 
