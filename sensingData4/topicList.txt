@@ -1,0 +1,9 @@
+# raspberry
+
+ - topic 
+    sendTopic = ["tcs/temp", "tcs/humid",  "tcs/fire", "tcs/shock", "tcs/ir", "tcs/clear", "tcs/localip", "tcs/cameraport", "test/broker"]
+    TakeTopic = ["tcs/com", "tcs/phone", "tcs/detectServer"]
+
+    computerMessage = ["", ""]
+    phoneMessage = ["start", "get", "IpPort"]
+    detectServerMessage = ["start", "IpPort", "true", "dStart", "dEnd"] 
