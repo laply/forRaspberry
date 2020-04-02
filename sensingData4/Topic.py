@@ -37,7 +37,7 @@ class Topic :
         def on_message(client, userdata, msg):
             print("MQTT-onMessage")
             self.flag = True
-            self.topic = userdata
+            self.topic = str(msg.topic)
             self.data = str(msg.payload)
         
         self.connect.setOnConnect(on_connect)
