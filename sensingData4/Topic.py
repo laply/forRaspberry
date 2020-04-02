@@ -1,12 +1,15 @@
 import Connect
 
 class Topic :
-    sendTopic = ["tcs/temp", "tcs/humid",  "tcs/fire", "tcs/shock", "tcs/ir", "tcs/clear", "tcs/localip", "tcs/cameraport", "test/broker"]
+    sendTopic = ["tcs/rasp/temp", "tcs/rasp/humid",  "tcs/rasp/fire", "tcs/rasp/shock", 
+    "tcs/rasp/ir", "tcs/rasp/clear", "tcs/rasp/localIp", "tcs/rasp/cameraPort",
+     "test/rasp/broker"]
+    
     TakeTopic = ["tcs/com", "tcs/phone", "tcs/detectServer"]
 
     computerMessage = ["", ""]
-    phoneMessage = ["start", "get", "IpPort"]
-    detectServerMessage = ["start", "IpPort", "true", "dStart", "dEnd"] 
+    phoneMessage = ["start", "get", "ipPort"]
+    detectServerMessage = ["start", "ipPort", "true", "dStart", "dEnd"] 
 
     MessageList = [computerMessage, phoneMessage, detectServerMessage]
 
