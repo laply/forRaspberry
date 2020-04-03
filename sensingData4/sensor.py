@@ -29,11 +29,7 @@ class Sensor :
 						self.ir_instance, self.led_instance, self.clear_instance]
 
 	def sensingStart(self):
-		self.tempHumidCheck()
-		self.fireCheck()
-		self.irCheck()
-		self.shockCheck()
-		self.clearButton()
+		self.sensingList()
 		self.getData()
 
 	def getData(self):
@@ -90,8 +86,15 @@ class Sensor :
 			self.topic.setSenderMesaageTopic(6, self.cameraIpPort[0])
 			self.topic.setSenderMesaageTopic(7, self.cameraIpPort[1])
 
-	def tempHumidCheck(self): # 0, 1
-		result = self.dht11_instance.read()
+	def sensingList(self):
+		self.tempHumidCheck()
+		self.fireCheck()
+		self.irCheck()
+		self.shockCheck()
+		self.clearButton()
+
+	def tempHumidCheck(self): # instance 0 / topic, lastdart 0, 1
+		result = self.self.instance[0].read() 
 		if result.is_valid():
 
 			now_time = "Last valid input: " + str(datetime.datetime.now())
@@ -113,34 +116,34 @@ class Sensor :
 
 			self.tHCount += 1
 
-	def fireCheck(self): # 2
-		read = self.instance[2].read()
+	def fireCheck(self): # instance 1 / topic, lastdart 2
+		read = self.instance[1].read()
 		if read == 1:
 			self.topic.setSenderMesaageTopic(2, 1)
-			self.lastdata[2] = "1"
-			self.instance[2].write(0)
+			self.lastdata[1] = "1"
+			self.instance[1].write(0)
 			print(datetime.datetime.now())
 			print("MQTT-send -" + "fire")
 
-	def shockCheck(self): # 3
-		read = self.instance[3].read()
+	def shockCheck(self): # instance 2 / topic, lastdart 3
+		read = self.instance[2].read()
 		if read == 1:
 			self.topic.setSenderMesaageTopic(3, 1)
-			self.lastdata[3] = "1"
-			self.instance[3].write(0)
+			self.lastdata[2] = "1"
+			self.instance[2].write(0)
 			print(str(datetime.datetime.now()))
 			print("MQTT-send - " + "shock")
 
-	def irCheck(self): # 4
-		read = self.instance[4].read()
+	def irCheck(self): # instance 3 / topic, lastdart 4
+		read = self.instance[3].read()
 		if read == 0:
 			self.topic.setSenderMesaageTopic(4, 1)
-			self.lastdata[4] ="1"
-			self.instance[4].write(0)
+			self.lastdata[3] ="1"
+			self.instance[3].write(0)
 			print(str(datetime.datetime.now()))
 			print("MQTT-send - " + "detect")
 
-	def clearButton(self): # 5
+	def clearButton(self): #  topic 6
 		read = self.instance[5].read()
 
 		if read == 0 :
