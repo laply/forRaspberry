@@ -9,7 +9,7 @@ class Topic :
 
     computerMessage = ["", ""]
     phoneMessage = [["start"], ["get"], ["ipPort"]]
-    detectServerMessage = ["start", "ipPort", "true", "dStart", "dEnd"]
+    detectServerMessage = [["start"], ["ipPort"], ["true"], ["dStart"], ["dEnd"]]
 
     MessageList = [computerMessage, phoneMessage, detectServerMessage]
 
