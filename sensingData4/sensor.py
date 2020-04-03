@@ -7,7 +7,7 @@ class Sensor :
 	# dht11_pin = 22 / fire_pin = 25 / led_red_pin = 24 / led_green_pin = 23
 	# shock_pin = 27 / ir_sensor_pin = 16 / button_pin = 26W
 
-	lastdata = ["0", "0", "0", "0", "0", "0"]
+	lastdatas = ["0", "0", "0", "0", "0", "0"]
 
 	def __init__(self, GPIO, brokerIpPort, cameraIpPort):
 		self.tHCount = 0
@@ -66,21 +66,21 @@ class Sensor :
 
 	def senderIsCom(self, senderMesaage):
 		print("com")
-		self.topic.setSendMessageTopic(0, self.lastadata)
+		self.topic.setSendMessageTopic(0, self.lastdatas[0])
 
 	# phoneMessage = ["start", "get", "IpPort"]
 	def senderIsPhone(self, senderMesaage):
 		print("sender is phone")		
 		if senderMesaage == 0:
-			for i, lastadata in enumerate(self.lastdata):
+			for i, lastdata in enumerate(self.lastdatas):
 				self.topic.setSendMessageTopic(i, self.lastadata)
 
 			self.topic.setSendMessageTopic(6, self.cameraIpPort[0])
 			self.topic.setSendMessageTopic(7, self.cameraIpPort[1])
 			self.topic.setSendMessageTopic(8, "send-start")
 		elif senderMesaage == 1:
-			for i, lastadata in enumerate(self.lastdata):
-				self.topic.setSendMessageTopic(i, lastadata)
+			for i, lastdata in enumerate(self.lastdatas):
+				self.topic.setSendMessageTopic(i, self.lastdata)
 			self.topic.setSendMessageTopic(8, "send-get")
 		elif senderMesaage == 2:
 			self.topic.setSendMessageTopic(6, self.cameraIpPort[0])
@@ -112,8 +112,8 @@ class Sensor :
 			temp = "Temperature: %d C" % result.temperature
 			humid = "Humidity: %d %%" % result.humidity
 
-			self.lastdata[0] = temp
-			self.lastdata[1] = humid
+			self.lastdatas[0] = temp
+			self.lastdatas[1] = humid
 
 			if(self.tHCount == 5):
 				self.topic.setSendMessageTopic(0, temp)
@@ -131,7 +131,7 @@ class Sensor :
 		read = self.instance[1].read()
 		if read == 1:
 			self.topic.setSendMessageTopic(2, 1)
-			self.lastdata[1] = "1"
+			self.lastdatas[1] = "1"
 			print(datetime.datetime.now())
 			print("MQTT-send -" + "fire")
 
@@ -139,7 +139,7 @@ class Sensor :
 		read = self.instance[2].read()
 		if read == 1:
 			self.topic.setSendMessageTopic(3, 1)
-			self.lastdata[2] = "1"
+			self.lastdatas[2] = "1"
 			print(str(datetime.datetime.now()))
 			print("MQTT-send - " + "shock")
 
@@ -147,7 +147,7 @@ class Sensor :
 		read = self.instance[3].read()
 		if read == 1: # 0!!
 			self.topic.setSendMessageTopic(4, 1)
-			self.lastdata[3] ="1"
+			self.lastdatas[3] ="1"
 			print(str(datetime.datetime.now()))
 			print("MQTT-send - " + "detect")
 
@@ -159,7 +159,7 @@ class Sensor :
 				if i == 6:
 					self.topic.setSendMessageTopic(i, 1)
 				else :
-					self.lastdata[i] = "0"
+					self.lastdatas[i] = "0"
 					self.topic.setSendMessageTopic(i, 0)
 
 			print(str(datetime.datetime.now()))
