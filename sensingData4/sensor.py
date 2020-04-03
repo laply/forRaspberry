@@ -105,8 +105,8 @@ class Sensor :
 			self.lastdata[1] = humid
 
 			if(self.tHCount == 5):
-				self.topic.setSenderMesaageTopic(0, temp)
-				self.topic.setSenderMesaageTopic(1, humid)
+				self.topic.setSendMessageTopic(0, temp)
+				self.topic.setSendMessageTopic(1, humid)
 				self.tHCount = 0
 
 				print(now_time)
@@ -119,7 +119,7 @@ class Sensor :
 	def fireCheck(self): # instance 1 / topic, lastdart 2
 		read = self.instance[1].read()
 		if read == 1:
-			self.topic.setSenderMesaageTopic(2, 1)
+			self.topic.setSendMessageTopic(2, 1)
 			self.lastdata[1] = "1"
 			self.instance[1].write(0)
 			print(datetime.datetime.now())
@@ -128,7 +128,7 @@ class Sensor :
 	def shockCheck(self): # instance 2 / topic, lastdart 3
 		read = self.instance[2].read()
 		if read == 1:
-			self.topic.setSenderMesaageTopic(3, 1)
+			self.topic.setSendMessageTopic(3, 1)
 			self.lastdata[2] = "1"
 			self.instance[2].write(0)
 			print(str(datetime.datetime.now()))
@@ -137,7 +137,7 @@ class Sensor :
 	def irCheck(self): # instance 3 / topic, lastdart 4
 		read = self.instance[3].read()
 		if read == 0:
-			self.topic.setSenderMesaageTopic(4, 1)
+			self.topic.setSendMessageTopic(4, 1)
 			self.lastdata[3] ="1"
 			self.instance[3].write(0)
 			print(str(datetime.datetime.now()))
@@ -149,10 +149,10 @@ class Sensor :
 		if read == 0 :
 			for i in range(3, 7):
 				if i == 6:
-					self.topic.setSenderMesaageTopic(i, 1)
+					self.topic.setSendMessageTopic(i, 1)
 				else :
 					self.lastdata[i] = "0"
-					self.topic.setSenderMesaageTopic(i, 0)
+					self.topic.setSendMessageTopic(i, 0)
 
 			print(str(datetime.datetime.now()))
 			print("MQTT-send - clear")
