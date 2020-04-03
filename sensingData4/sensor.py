@@ -66,36 +66,36 @@ class Sensor :
 
 	def senderIsCom(self, senderMesaage):
 		print("com")
-		self.topic.setSendMesaageTopic(0, self.lastadata)
+		self.topic.setSendMessageTopic(0, self.lastadata)
 
 	# phoneMessage = ["start", "get", "IpPort"]
 	def senderIsPhone(self, senderMesaage):
 		print("sender is phone")		
 		if senderMesaage == 0:
 			for i, lastadata in enumerate(self.lastdata):
-				self.topic.setSendMesaageTopic(i, self.lastadata)
+				self.topic.setSendMessageTopic(i, self.lastadata)
 
-			self.topic.setSendMesaageTopic(6, self.cameraIpPort[0])
-			self.topic.setSendMesaageTopic(7, self.cameraIpPort[1])
-			self.topic.setSendMesaageTopic(8, "send-start")
+			self.topic.setSendMessageTopic(6, self.cameraIpPort[0])
+			self.topic.setSendMessageTopic(7, self.cameraIpPort[1])
+			self.topic.setSendMessageTopic(8, "send-start")
 		elif senderMesaage == 1:
 			for i, lastadata in enumerate(self.lastdata):
-				self.topic.setSendMesaageTopic(i, lastadata)
-			self.topic.setSendMesaageTopic(8, "send-get")
+				self.topic.setSendMessageTopic(i, lastadata)
+			self.topic.setSendMessageTopic(8, "send-get")
 		elif senderMesaage == 2:
-			self.topic.setSendMesaageTopic(6, self.cameraIpPort[0])
-			self.topic.setSendMesaageTopic(7, self.cameraIpPort[1])
+			self.topic.setSendMessageTopic(6, self.cameraIpPort[0])
+			self.topic.setSendMessageTopic(7, self.cameraIpPort[1])
 
 	# detectServerMessage = ["start", "IpPort", "true", "dStart", "dEnd"]
 	def senderIsDServer(self, senderMesaage):
 		print("sender is DServer")			
 		if senderMesaage == 0:
-			self.topic.setSendMesaageTopic(6, self.cameraIpPort[0])
-			self.topic.setSendMesaageTopic(7, self.cameraIpPort[1])
-			self.topic.setSendMesaageTopic(8, "send-start")
+			self.topic.setSendMessageTopic(6, self.cameraIpPort[0])
+			self.topic.setSendMessageTopic(7, self.cameraIpPort[1])
+			self.topic.setSendMessageTopic(8, "send-start")
 		elif senderMesaage == 1:
-			self.topic.setSendMesaageTopic(6, self.cameraIpPort[0])
-			self.topic.setSendMesaageTopic(7, self.cameraIpPort[1])
+			self.topic.setSendMessageTopic(6, self.cameraIpPort[0])
+			self.topic.setSendMessageTopic(7, self.cameraIpPort[1])
 
 	def sensingList(self):
 		self.tempHumidCheck()
