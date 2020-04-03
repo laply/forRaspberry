@@ -66,13 +66,14 @@ class Sensor :
 
 	def senderIsCom(self, senderMesaage):
 		print("com")
+		self.topic.setSenderMesaageTopic(0, self.lastadata)
 
 	# phoneMessage = ["start", "get", "IpPort"]
 	def senderIsPhone(self, senderMesaage):
 		print("sender is phone")		
 		if senderMesaage == 0:
 			for i, lastadata in enumerate(lastdata):
-				self.topic.setSenderMesaageTopic(i, lastadata)
+				self.topic.setSenderMesaageTopic(i, self.lastadata)
 
 			self.topic.setSenderMesaageTopic(6, self.cameraIpPort[0])
 			self.topic.setSenderMesaageTopic(7, self.cameraIpPort[1])
