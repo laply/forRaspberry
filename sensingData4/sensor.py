@@ -48,11 +48,10 @@ class Sensor :
 	def matchingTopic(self, messgeSenderindex):
 		print("start matching Topic")
 		data = self.topic.data
-		for Listnum, messageList in enumerate(self.topic.MessageList[messgeSenderindex]):
-			for messageNum, message in enumerate(messageList):
-				print(data, Listnum, messageNum,  message)	
-				if data == message :
-					return [Listnum, messageNum]
+		for messageNum, message in enumerate(self.topic.MessageList[messgeSenderindex]):
+			print(data, messgeSenderindex, messageNum,  message)	
+			if data == message :
+				return [messgeSenderindex, messageNum]
 
 	def sender(self, senderData):
 		print("sender Topic")
