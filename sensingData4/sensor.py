@@ -58,11 +58,11 @@ class Sensor :
 	def sender(self, senderData):
 		print("sender Topic")
 		if senderData[0] == 0 :
-			senderIsCom(senderData[1])
+			self.senderIsCom(senderData[1])
 		elif senderData[0] == 1:
-			senderIsPhone(senderData[1])
+			self.senderIsPhone(senderData[1])
 		elif senderData[0] == 2:
-			senderIsDServer(senderData[1])
+			self.senderIsDServer(senderData[1])
 
 	def senderIsCom(self, senderMesaage):
 		print("com")
