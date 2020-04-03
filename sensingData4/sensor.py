@@ -34,6 +34,7 @@ class Sensor :
 
 	def getData(self):
 		if self.topic.flag == True:
+			print("take Topic")
 			topic = self.topic.topic
 			for i, sender in enumerate(self.topic.TakeTopic):
 				if topic == sender:
@@ -41,6 +42,7 @@ class Sensor :
 					sender = [senderData]
 
 	def matchingTopic(self, messgeSenderindex):
+		print("start matching Topic")
 		data = self.topic.data
 		for Listnum, messageList in enumerate(self.topic.MessageList[messgeSenderindex]):
 			for messageNum, message in enumerate(messageList):
@@ -49,6 +51,7 @@ class Sensor :
 					return [Listnum, messageNum]
 
 	def sender(self, senderData):
+		print("sender Topic")
 		if senderData[0] == 0 :
 			senderIsCom(senderData[1])
 		elif senderData[0] == 1:
@@ -61,6 +64,7 @@ class Sensor :
 
 	# phoneMessage = ["start", "get", "IpPort"]
 	def senderIsPhone(self, senderMesaage):
+		print("sender is phone")		
 		if senderMesaage == 0:
 			for i, lastadata in enumerate(lastdata):
 				self.topic.setSenderMesaageTopic(i, lastadata)
@@ -78,6 +82,7 @@ class Sensor :
 
 	# detectServerMessage = ["start", "IpPort", "true", "dStart", "dEnd"]
 	def senderIsDServer(self, senderMesaage):
+		print("sender is DServer")			
 		if senderMesaage == 0:
 			self.topic.setSenderMesaageTopic(6, self.cameraIpPort[0])
 			self.topic.setSenderMesaageTopic(7, self.cameraIpPort[1])
