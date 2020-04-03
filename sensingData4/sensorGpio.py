@@ -231,7 +231,7 @@ class IR:
 		self.setting()
 
 	def setting(self):
-		self.GPIO.setup(self.__pin, self.GPIO.IN
+		self.GPIO.setup(self.__pin, self.GPIO.IN)
 
 	def read(self):
 		return self.GPIO.input(self.__pin)
