@@ -8,7 +8,7 @@ class Topic :
     TakeTopic = ["tcs/com", "tcs/phone", "tcs/detectServer"]
 
     computerMessage = ["", ""]
-    phoneMessage = ["start", "get", "ipPort"]
+    phoneMessage = [["start"], ["get"], ["ipPort"]]
     detectServerMessage = ["start", "ipPort", "true", "dStart", "dEnd"]
 
     MessageList = [computerMessage, phoneMessage, detectServerMessage]
