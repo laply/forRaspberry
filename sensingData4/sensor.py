@@ -50,7 +50,7 @@ class Sensor :
 		data = self.topic.data
 		for Listnum, messageList in enumerate(self.topic.MessageList[messgeSenderindex]):
 			for messageNum, message in enumerate(messageList):
-				print(data ,messageNum,  message)	
+				print(data, Listnum, messageNum,  message)	
 				if data == message :
 					return [Listnum, messageNum]
 
