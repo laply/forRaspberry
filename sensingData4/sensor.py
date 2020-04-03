@@ -41,7 +41,9 @@ class Sensor :
 				print(topic, i, sender)
 				if topic == sender:
 					senderData = self.matchingTopic(i)
+					print(senderData)
 					self.sender(senderData)
+					break
 
 	def matchingTopic(self, messgeSenderindex):
 		print("start matching Topic")
@@ -62,7 +64,7 @@ class Sensor :
 			self.senderIsDServer(senderData[1])
 
 	def senderIsCom(self, senderMesaage):
-		print("com")
+		print("sender is com")
 		self.topic.setSendMessageTopic(0, self.lastdatas[0])
 
 	# phoneMessage = ["start", "get", "IpPort"]
