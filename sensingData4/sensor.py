@@ -134,7 +134,7 @@ class Sensor :
 
 	def irCheck(self): # instance 3 / topic, lastdart 4
 		read = self.instance[3].read()
-		if read == 0:
+		if read == 1: # 0!!
 			self.topic.setSendMessageTopic(4, 1)
 			self.lastdata[3] ="1"
 			print(str(datetime.datetime.now()))
@@ -143,7 +143,7 @@ class Sensor :
 	def clearButton(self): #  topic 6
 		read = self.instance[5].read()
 
-		if read == 0 :
+		if read == 1: # 0!!
 			for i in range(3, 7):
 				if i == 6:
 					self.topic.setSendMessageTopic(i, 1)
