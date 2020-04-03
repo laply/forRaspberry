@@ -8,7 +8,7 @@ button_pin = 25
 
 client = mqtt.Client()
 
-client.connect("115.20.144.97", "11183", 60)
+client.connect("172.30.1.14")
 topic = "hi/there"
 
 gpio.setmode(gpio.BCM)
@@ -20,10 +20,10 @@ gpio.setup(button_pin, gpio.IN)
 try:
     print("start")
     client.loop_start()
-    client.publish(topic, "start_test_Base.py")
+    client.publish(topic, "start_test_LednBt.py")
     i = 0
-
     while True:
+
 	if gpio.input(button_pin) == False:
 	    i =  i + 1
 	    client.publish(topic, "on Clicked Button {}".format(i))
@@ -31,11 +31,17 @@ try:
 	    gpio.output(led_pin1, True)
 	    time.sleep(1)
 	    gpio.output(led_pin1, False)
+	    time.sleep(0.5)
 
+            print("pin2")
+            gpio.output(led_pin2, True)
+            time.sleep(1)
+            gpio.output(led_pin2, False)
+            time.sleep(0.5)
 
 
 except KeyboardInterrupt:
-    client.publish(topic, "end_test_Base.py")
+    client.publish(topic, "end_test_LednBt.py")
     print("end")
     gpio.cleanup()
     client.loop_stop()
