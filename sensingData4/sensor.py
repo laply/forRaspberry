@@ -39,7 +39,7 @@ class Sensor :
 			topic = self.topic.topic
 			print(topic)
 			for i, sender in enumerate(self.topic.TakeTopic):
-				print(i + sender)
+				print(i, sender)
 				if topic == sender:
 					senderData = self.matchingTopic(i)
 					self.sender(senderData)
