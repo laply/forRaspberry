@@ -42,7 +42,7 @@ class Sensor :
 
 	def matchingTopic(self, messgeSenderindex):
 		data = self.topic.data
-		for Listnum, messageList in enumerate(self.topic.MessgeList[messgeSenderindex]):
+		for Listnum, messageList in enumerate(self.topic.MessageList[messgeSenderindex]):
 			for messageNum, message in enumerate(messageList):
 				if data == message :
 					self.topic.flag = False
