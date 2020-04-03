@@ -255,6 +255,7 @@ class LED:
 		elif(i == 1):
 			self.GPIO.output(self.__pin_G, True)
 			self.GPIO.output(self.__pin_R, False)
+			
 class Button:
 	def __init__(self, pin, GPIO):
 		self.GPIO = GPIO

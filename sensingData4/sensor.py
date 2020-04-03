@@ -94,7 +94,7 @@ class Sensor :
 		self.clearButton()
 
 	def tempHumidCheck(self): # instance 0 / topic, lastdart 0, 1
-		result = self.self.instance[0].read() 
+		result = self.instance[0].read() 
 		if result.is_valid():
 
 			now_time = "Last valid input: " + str(datetime.datetime.now())
