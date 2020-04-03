@@ -1,7 +1,8 @@
 import Connect
 
 class Topic :
-    sendTopic = ["tcs/rasp/temp", "tcs/rasp/humid",  "tcs/rasp/fire", "tcs/rasp/shock", 
+
+    sendTopic = ["tcs/rasp1/temp", "tcs/rasp1/humid",  "tcs/rasp1/fire", "tcs/rasp1/shock", 
     "tcs/rasp/ir", "tcs/rasp/clear", "tcs/rasp/localIp", "tcs/rasp/cameraPort",
      "test/rasp/broker"]
 
@@ -12,6 +13,11 @@ class Topic :
     detectServerMessage = ["start", "ipPort", "true", "dStart", "dEnd"]
 
     MessageList = [computerMessage, phoneMessage, detectServerMessage]
+    
+    raspdata = ["id", sendTopic, MessageList, TakeTopic] 
+
+    # topic - id/sendTopic 
+
 
     flag = False
     topic = ""
