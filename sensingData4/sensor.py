@@ -121,7 +121,6 @@ class Sensor :
 		if read == 1:
 			self.topic.setSendMessageTopic(2, 1)
 			self.lastdata[1] = "1"
-			self.instance[1].write(0)
 			print(datetime.datetime.now())
 			print("MQTT-send -" + "fire")
 
@@ -130,7 +129,6 @@ class Sensor :
 		if read == 1:
 			self.topic.setSendMessageTopic(3, 1)
 			self.lastdata[2] = "1"
-			self.instance[2].write(0)
 			print(str(datetime.datetime.now()))
 			print("MQTT-send - " + "shock")
 
@@ -139,7 +137,6 @@ class Sensor :
 		if read == 0:
 			self.topic.setSendMessageTopic(4, 1)
 			self.lastdata[3] ="1"
-			self.instance[3].write(0)
 			print(str(datetime.datetime.now()))
 			print("MQTT-send - " + "detect")
 
