@@ -39,7 +39,7 @@ class Sensor :
 			topic = self.topic.topic
 			print(topic)
 			for i, sender in enumerate(self.topic.TakeTopic):
-				print(sender)
+				print(i + sender)
 				if topic == sender:
 					senderData = self.matchingTopic(i)
 					self.sender(senderData)
@@ -73,7 +73,7 @@ class Sensor :
 		print("sender is phone")		
 		if senderMesaage == 0:
 			for i, lastdata in enumerate(self.lastdatas):
-				self.topic.setSendMessageTopic(i, self.lastadata)
+				self.topic.setSendMessageTopic(i, self.lastdata)
 
 			self.topic.setSendMessageTopic(6, self.cameraIpPort[0])
 			self.topic.setSendMessageTopic(7, self.cameraIpPort[1])
