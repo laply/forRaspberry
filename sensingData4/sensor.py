@@ -37,7 +37,9 @@ class Sensor :
 			print("take Topic")
 			self.topic.flag = False
 			topic = self.topic.topic
+			print(topic)
 			for i, sender in enumerate(self.topic.TakeTopic):
+				print(sender)
 				if topic == sender:
 					senderData = self.matchingTopic(i)
 					sender = [senderData]
