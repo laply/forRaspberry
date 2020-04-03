@@ -17,7 +17,7 @@ class DHT11Result:
 	def is_valid(self):
 		return self.error_code == DHT11Result.ERR_NO_ERROR
 
-class DHT11: 
+class DHT11:
 
 	def __init__(self, pin, GPIO):
 		self.GPIO = GPIO
@@ -209,6 +209,9 @@ class Fire:
 	def setting(self):
 		self.GPIO.setup(self.__pin, self.GPIO.IN)
 
+	def read(self):
+		return self.GPIO.input(self.__pin)
+
 class Shock:
 	def __init__(self, pin, GPIO):
 		self.__pin = pin
@@ -218,6 +221,9 @@ class Shock:
 	def setting(self):
 		self.GPIO.setup(self.__pin, self.GPIO.IN)
 
+	def read(self):
+		return self.GPIO.input(self.__pin)
+
 class IR:
 	def __init__(self, pin, GPIO):
 		self.__pin = pin
@@ -225,8 +231,12 @@ class IR:
 		self.setting()
 
 	def setting(self):
-		self.GPIO.setup(self.__pin, self.GPIO.IN)
-		
+		self.GPIO.setup(self.__pin, self.GPIO.IN
+
+	def read(self):
+		return self.GPIO.input(self.__pin)
+
+
 class LED:
 	def __init__(self, pin_R, pin_G, GPIO):
 		self.GPIO = GPIO

@@ -1,6 +1,5 @@
 import RPi.GPIO as GPIO
 import sensor
-import testNoPin # node
 import os
 
 # initialize GPIO
@@ -23,7 +22,7 @@ cameraIpPort = [ localGlobalIp , cameraPort ]
 brokerIpPort = ["115.20.144.97", "11183"]
 
 
-cameraCheck = os.system('sh /home/pi/raspstart/mjpg.sh &') ##
+#cameraCheck = os.system('sh /home/pi/raspstart/mjpg.sh &') ##
 
 # Can Use GPIO
 mainInstance = sensor.Sensor(GPIO, brokerIpPort,cameraIpPort)

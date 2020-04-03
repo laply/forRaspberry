@@ -13,7 +13,7 @@ class Sensor :
 		self.tHCount = 0
 		self.brokerIpPort = brokerIpPort
 		self.cameraIpPort = cameraIpPort
-		self.topic = Topic.SendTopic(brokerIpPort)
+		self.topic = Topic.Topic(brokerIpPort)
 
 		self.setInstance(GPIO)
 		self.led_instance.write(1)
@@ -58,7 +58,7 @@ class Sensor :
 		elif senderData[0] == 1:
 			senderIsPhone(senderData[1])
 		elif senderData[0] == 2:
-			senderIsDServer(senderData[1])	
+			senderIsDServer(senderData[1])
 
 	def senderIsCom(self, senderMesaage):
 		print("com")
@@ -68,7 +68,7 @@ class Sensor :
 		if senderMesaage == 0:
 			for i, lastadata in enumerate(lastdata):
 				self.topic.setSenderMesaageTopic(i, lastadata)
-			
+
 			self.topic.setSenderMesaageTopic(6, self.cameraIpPort[0])
 			self.topic.setSenderMesaageTopic(7, self.cameraIpPort[1])
 			self.topic.setSenderMesaageTopic(8, "send-start")
@@ -80,9 +80,9 @@ class Sensor :
 			self.topic.setSenderMesaageTopic(6, self.cameraIpPort[0])
 			self.topic.setSenderMesaageTopic(7, self.cameraIpPort[1])
 
-	# detectServerMessage = ["start", "IpPort", "true", "dStart", "dEnd"] 
+	# detectServerMessage = ["start", "IpPort", "true", "dStart", "dEnd"]
 	def senderIsDServer(self, senderMesaage):
-		if senderMesaage == 0:	
+		if senderMesaage == 0:
 			self.topic.setSenderMesaageTopic(6, self.cameraIpPort[0])
 			self.topic.setSenderMesaageTopic(7, self.cameraIpPort[1])
 			self.topic.setSenderMesaageTopic(8, "send-start")
@@ -97,7 +97,7 @@ class Sensor :
 			now_time = "Last valid input: " + str(datetime.datetime.now())
 			temp = "Temperature: %d C" % result.temperature
 			humid = "Humidity: %d %%" % result.humidity
-			
+
 			self.lastdata[0] = temp
 			self.lastdata[1] = humid
 
@@ -113,7 +113,7 @@ class Sensor :
 
 			self.tHCount += 1
 
-	def fireCheck(self): # 2 
+	def fireCheck(self): # 2
 		read = self.instance[2].read()
 		if read == 1:
 			self.topic.setSenderMesaageTopic(2, 1)
