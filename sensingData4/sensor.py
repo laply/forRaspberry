@@ -42,7 +42,7 @@ class Sensor :
 				print(sender)
 				if topic == sender:
 					senderData = self.matchingTopic(i)
-					sender = [senderData]
+					sender(senderData)
 
 	def matchingTopic(self, messgeSenderindex):
 		print("start matching Topic")
