@@ -17,8 +17,8 @@ class Connect :
             		self.client.loop_stop()
             		self.client.disconnect()
 
-	def sendPublish(self, Topic, data):
-            self.client.publish(Topic, data)
+		def setPublish(self, Topic, data):
+			self.client.publish(Topic, data)
 
         def setSubscribe(self, i):
             self.client.subscribe(i)
