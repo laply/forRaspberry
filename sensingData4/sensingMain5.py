@@ -11,6 +11,8 @@ GPIO.cleanup()
 localIp = os.popen('hostname -I').read() ##  local ip
 localPort "8891"
 
+raspid = "test1"
+
 localGlobalIp = os.popen('curl ifconfig.me').read() ## global ip
 cameraPort = "11092"
 
@@ -20,16 +22,18 @@ else :
 	cameraIpPort = [localGlobalIp , cameraPort]
 
 # dev server IP 
-# brokerIppPort = ["124.139.136.86", "1883"]  
+# brokerIpPort = ["124.139.136.86", "1883"]  
 
 # test server IP
 brokerIpPort = ["115.20.144.97", "11183"]
 
 
+allIpPort = [brokerIpPort, cameraIpPort]
+
 #cameraCheck = os.system('sh /home/pi/raspstart/mjpg.sh &') ##
 
 # Can Use GPIO
-mainInstance = sensor.Sensor(GPIO, brokerIpPort,cameraIpPort)
+mainInstance = sensor.Sensor(GPIO, allIpPort, raspid)
 
 # Can not use GPIO
 # mainInstance = testNoPin.Sensor(GPIO, brokerIpPort, cameraIpPort)
