@@ -3,6 +3,7 @@ import datetime
 import Topic
 
 class Sensor :
+	
 	all_pin = [22, 25, 24, 23, 27, 16, 26]
 	# dht11_pin = 22 / fire_pin = 25 / led_red_pin = 24 / led_green_pin = 23
 	# shock_pin = 27 / ir_sensor_pin = 16 / button_pin = 26W
@@ -64,8 +65,21 @@ class Sensor :
 
 	def senderIsCom(self, senderMesaage):
 		print("sender is com")
-		self.topic.setSendMessageTopic(0, self.lastdatas[0])
+		if senderMesaage == 0:
+			for i, lastdata in enumerate(self.lastdatas):
+				self.topic.setSendMessageTopic(i, lastdata)
 
+			self.topic.setSendMessageTopic(6, self.cameraIpPort[0])
+			self.topic.setSendMessageTopic(7, self.cameraIpPort[1])
+			self.topic.setSendMessageTopic(8, "send-start")
+		elif senderMesaage == 1:
+			for i, lastdata in enumerate(self.lastdatas):
+				self.topic.setSendMessageTopic(i, lastdata)
+			self.topic.setSendMessageTopic(8, "send-get")
+		elif senderMesaage == 2:
+			self.topic.setSendMessageTopic(6, self.cameraIpPort[0])
+			self.topic.setSendMessageTopic(7, self.cameraIpPort[1])
+			
 	# phoneMessage = ["start", "get", "IpPort"]
 	def senderIsPhone(self, senderMesaage):
 		print("sender is phone")		
