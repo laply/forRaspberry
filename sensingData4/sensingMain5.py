@@ -9,20 +9,20 @@ GPIO.cleanup()
 
 
 localIp = os.popen('hostname -I').read() ##  local ip
-localPort "8891"
+localPort = "8891"
 
 raspid = "test1"
 
 localGlobalIp = os.popen('curl ifconfig.me').read() ## global ip
-cameraPort = "11092"
+cameraPort = "8891"
 
 if localIp == localGlobalIp:
 	cameraIpPort =[localGlobalIp, localPort]
 else :
 	cameraIpPort = [localGlobalIp , cameraPort]
 
-# dev server IP 
-# brokerIpPort = ["124.139.136.86", "1883"]  
+# dev server IP
+# brokerIpPort = ["124.139.136.86", "1883"]
 
 # test server IP
 brokerIpPort = ["115.20.144.97", "11183"]
