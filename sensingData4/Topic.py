@@ -2,7 +2,7 @@ import Connect
 
 class Topic :
 
-    # 모든 토픽 = "raspid/"+"Topic"
+    # "raspid/"+"Topic"
 
     sendTopic = ["tcs/rasp/temp", "tcs/rasp/humid",  "tcs/rasp/fire", "tcs/rasp/shock", 
     "tcs/rasp/ir", "tcs/rasp/clear", "tcs/rasp/localIp", "tcs/rasp/cameraPort",
@@ -17,7 +17,7 @@ class Topic :
     MessageList = [computerMessage, phoneMessage, detectServerMessage]
 
 
-    # topic - id/sendTopic 
+    # topic - id/sendTopic
 
 
     flag = False
@@ -30,17 +30,17 @@ class Topic :
         self.initToSub()
 
     def setTakeMassageTopic(self, topic):
-        self.connect.setSubscribe(self.raspid + topic)
+        self.connect.setSubscribe(self.raspid+"/"+ topic)
 
     def setSendMessageTopic(self, sensorNum, data):
-        self.connect.setPublish(self.raspid + self.sendTopic[sensorNum], data)
+        self.connect.setPublish(self.raspid + "/" + self.sendTopic[sensorNum], data)
 
     def initToSub(self):
         print("MQTT-initTosub")
         def on_connect(client, userdata, flags, rc):
             print("MQTT-onConnect - " + str(rc))
             for i in self.TakeTopic :
-                self.setTakeMassageTopic(self.raspid + i)
+                self.setTakeMassageTopic(self.raspid + "/" + i)
 
         def on_message(client, userdata, msg):
             print("MQTT-onMessage")

@@ -18,6 +18,7 @@ class Connect :
             		self.client.disconnect()
 
 	def setPublish(self, Topic, data):
+	    print(Topic)
 	    self.client.publish(Topic, data)
 
         def setSubscribe(self, i):
