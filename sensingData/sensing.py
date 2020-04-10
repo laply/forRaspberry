@@ -1,7 +1,14 @@
-from sensor import *
 import datetime
 import time
 import Topic
+
+import DHT11
+import Shock
+import Fire
+import IR
+
+import Button
+import LED
 
 class Sensing :
 
@@ -18,15 +25,15 @@ class Sensing :
 		self.led_instance.write(1)
 
 	def setInstance(self, GPIO):
-		self.sensorTimerControl.append(sensor.DHT11.Control(self.all_pin[0], GPIO, self.topic,[0 ,1])) # topic 0 / 0, 1
-		self.sensorDetectControl.append(sensor.Fire.Control(self.all_pin[1], GPIO, self.topic, 2)) # topic 1 / 0
-		self.sensorDetectControl.append(sensor.Shock.Control(self.all_pin[4], GPIO, self.topic, 3))  # topic 1 / 1
-		self.sensorDetectControl.append(sensor.IR.Control(self.all_pin[5], GPIO, self.topic, 4)) #  topic 1 / 2
+		self.sensorTimerControl.append(DHT11.Control(self.all_pin[0], GPIO, self.topic,[0 ,1])) # topic 0 / 0, 1
+		self.sensorDetectControl.append(Fire.Control(self.all_pin[1], GPIO, self.topic, 2)) # topic 1 / 0
+		self.sensorDetectControl.append(Shock.Control(self.all_pin[4], GPIO, self.topic, 3))  # topic 1 / 1
+		self.sensorDetectControl.append(IR.Control(self.all_pin[5], GPIO, self.topic, 4)) #  topic 1 / 2
 
 		# topic 1 / 3 gas
 		# topic 1 / 4 cds 
-		self.button_instance = sensor.Button.Control(self.all_pin[6], GPIO)
-		self.led_instance = sensor.LED.LED(self.all_pin[3], self.all_pin[2], GPIO)
+		self.button_instance = Button.Control(self.all_pin[6], GPIO)
+		self.led_instance = LED.LED(self.all_pin[3], self.all_pin[2], GPIO)
 
 	def sensingStart(self):
 		self.sensingList()
