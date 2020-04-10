@@ -7,9 +7,6 @@ class Connect :
 
     def __init__(self, ipPort):
         print("MQTT-init")
-        self.connect(ipPort)
-
-	def connect(self, ipPort):
 		self.client.connect(ipPort[0], ipPort[1])
         print("MQTT-connect")
         try:
