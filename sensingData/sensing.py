@@ -2,8 +2,10 @@ import datetime
 import time
 import Topic
 
-from sensor import *
-
+import DHT11
+import Shock
+import Fire
+import IR
 import Button
 import LED
 
