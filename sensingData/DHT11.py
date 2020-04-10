@@ -217,7 +217,6 @@ class Control:
 
 	def check(self):
 		result = self.dht11_instance.read()
-		
 		if result.is_valid():
 			now_time = "Last valid input: " + str(datetime.datetime.now())
 			temp = "Temperature: %d C" % result.temperature
@@ -236,8 +235,6 @@ class Control:
 				print("MQTT-send - " + humid)
 
 			self.tHCount += 1
-
-		return False
 
 	def getNowData(self):
 		self.topic.setSendMessageTopic(0, self.tempTopicNum, self.lastdataTemp)
