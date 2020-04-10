@@ -1,7 +1,7 @@
 
 raspid = "test1"
 
-brokerIpPort =["172.30.1.11", "1883"]
+brokerIpPort = ["124.139.136.86", "1883"]
 
 cameraGlobalport = "8891"
 cameraLocalport = "8891"
