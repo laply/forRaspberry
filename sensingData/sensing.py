@@ -46,8 +46,9 @@ class Sensing :
 		self.receive.getData(self.raspid)
 
 	def sensingList(self):
-    	for i in self.sensorTimerControl :
+		for i in self.sensorTimerControl :
 			i.check()
+
 		for i in self.sensorDetectControl :
 			data = i.check()
 			if data == True :
