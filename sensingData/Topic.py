@@ -1,11 +1,11 @@
 import Connect
-import setting 
+import settingTopic
 
 class Topic :
     
-    sendTopic = setting.sendTopic
-    TakeTopic = setting.TakeTopic
-    MessageList = setting.MessageList
+    sendTopic = settingTopic.sendTopic
+    TakeTopic = settingTopic.TakeTopic
+    MessageList = settingTopic.MessageList
 
     flag = False
     topic = ""
