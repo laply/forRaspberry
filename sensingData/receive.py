@@ -51,7 +51,7 @@ class Receive:
 				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
 
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
-				self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo)
+				self.topic.setSendMessageTopic(2, i,cameraIpPortInfo)
 
 		elif senderMesaage == 1:
 			for i, sensorTimerControl in enumerate(self.sensorControl[0]):
@@ -63,7 +63,7 @@ class Receive:
 			
 		elif senderMesaage == 2:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
-				self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo)
+				self.topic.setSendMessageTopic(2, i, cameraIpPortInfo)
 
 	# phoneMessage = ["start", "get", "IpPort"]
 	def senderIsPhone(self, senderMesaage):
@@ -77,7 +77,7 @@ class Receive:
 				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
 
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
-				self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo)
+				self.topic.setSendMessageTopic(2, i, cameraIpPortInfo)
 
 		elif senderMesaage == 1:
 			for i, sensorTimerControl in enumerate(self.sensorControl[0]):
@@ -89,14 +89,14 @@ class Receive:
 			
 		elif senderMesaage == 2:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
-				self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo)
+				self.topic.setSendMessageTopic(2, i, cameraIpPortInfo)
 
 	# detectServerMessage = ["start", "IpPort", "true", "dStart", "dEnd"]
 	def senderIsDServer(self, senderMesaage):
 		print("sender is DServer")			
 		if senderMesaage == 0:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
- 				self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo)
+ 				self.topic.setSendMessageTopic(2, i, cameraIpPortInfo)
 		elif senderMesaage == 1:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
-				self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo)
+				self.topic.setSendMessageTopic(2, i, cameraIpPortInfo)
