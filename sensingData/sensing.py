@@ -2,10 +2,10 @@ import datetime
 import time
 import Topic
 
-import DHT11
-import Shock
-import Fire
-import IR
+from . import DHT11
+from . import Shock
+from . import Fire
+from . import IR
 
 import Button
 import LED
