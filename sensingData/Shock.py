@@ -28,7 +28,7 @@ class Control:
 	def check(self):
 		read = self.shock_instance.read()
 		if read == self.true and self.detectCheck == self.false :
-			self.detectCheck = true
+			self.detectCheck = self.true
 			self.detectCheckLastTime = datetime.datetime.now()
 
 			self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
@@ -38,7 +38,7 @@ class Control:
 			return True
 
 		elif read == self.false and self.detectCheck == self.false and self.state == self.false:
-			self.state = true
+			self.state = self.true
 			self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
 			return False
 
