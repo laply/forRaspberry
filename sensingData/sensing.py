@@ -25,7 +25,7 @@ class Sensing :
 
 		# topic 1 / 3 gas
 		# topic 1 / 4 cds 
-		self.button_instance = sensor.Button.Control(self.all_pin[6], GPIO))
+		self.button_instance = sensor.Button.Control(self.all_pin[6], GPIO)
 		self.led_instance = sensor.LED.LED(self.all_pin[3], self.all_pin[2], GPIO)
 
 	def sensingStart(self):
