@@ -48,7 +48,7 @@ class Receive:
 				self.topic.setSendMessageTopic(0, 2*i + 1, sensorTimerControl.lastdata[1])
 			
 			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
-				self.topic.setSendMessageTopic(1, i, sensorTimerControl.detectCheck)
+				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
 
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
 				self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo[i])
@@ -59,7 +59,7 @@ class Receive:
 				self.topic.setSendMessageTopic(0, 2*i + 1, sensorTimerControl.lastdata[1])
 			
 			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
-				self.topic.setSendMessageTopic(1, i, sensorTimerControl.detectCheck)
+				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
 			
 		elif senderMesaage == 2:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
@@ -74,7 +74,7 @@ class Receive:
 				self.topic.setSendMessageTopic(0, 2*i + 1, sensorTimerControl.lastdata[1])
 			
 			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
-				self.topic.setSendMessageTopic(1, i, sensorTimerControl.detectCheck)
+				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
 
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
 				self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo[i])
@@ -85,7 +85,7 @@ class Receive:
 				self.topic.setSendMessageTopic(0, 2*i + 1, sensorTimerControl.lastdata[1])
 			
 			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
-				self.topic.setSendMessageTopic(1, i, sensorTimerControl.detectCheck)
+				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
 			
 		elif senderMesaage == 2:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
@@ -95,8 +95,8 @@ class Receive:
 	def senderIsDServer(self, senderMesaage):
 		print("sender is DServer")			
 		if senderMesaage == 0:
-			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
-				self.topic.setSendMessageTopic(1, i, sensorTimerControl.detectCheck)
+			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
+    			self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo[i])
 		elif senderMesaage == 1:
-			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
-				self.topic.setSendMessageTopic(1, i, sensorTimerControl.detectCheck)
+			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
+    			self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo[i])
