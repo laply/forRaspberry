@@ -48,5 +48,5 @@ class Sensing :
 			if data == True :
 				self.led_instance.write(0)
 		
-		if self.button_instance.clearButton(sensorDetectControl):
+		if self.button_instance.clearButton(self.sensorDetectControl):
 			self.led_instance.write(1)
