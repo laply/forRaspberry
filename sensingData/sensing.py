@@ -14,8 +14,7 @@ class Sensing :
 		self.topic = Topic.Topic(self.brokerIpPort, raspid)
 
 		self.setInstance(GPIO)
-		self.receive = 
-			receive.receive([self.sensorTimerControl, self.sensorDetectControl ], self.cameraIpPort, self.topic)
+		self.receive = receive.receive([self.sensorTimerControl, self.sensorDetectControl ], self.cameraIpPort, self.topic)
 		self.led_instance.write(1)
 
 	def setInstance(self, GPIO):
