@@ -37,7 +37,7 @@ class Control:
 			print("MQTT-send - " + "shock")
 			return True
 
-	    elif read == false and self.detectCheck == false and self.state == false :
+		elif read == false and self.detectCheck == false and self.state == false:
 			self.state = true
 			self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
 			return False
