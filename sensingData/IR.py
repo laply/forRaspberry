@@ -22,7 +22,7 @@ class Control:
 		self.topicNum = topicNum
 
 		self.detectCheck = self.false
-		self.state == self.false
+		self.state = self.false
 		self.detectCheckLastTime = ""
 
 
