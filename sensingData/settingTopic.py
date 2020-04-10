@@ -12,8 +12,8 @@ sendTopic = [sensorTimerTopic, sensorDetectTopic, IpPortTopic]
 
 TakeTopic = ["tcs/com", "tcs/phone", "tcs/detectServer"]
 
-computerMessage = ["start", "get", "ipPort"]
-phoneMessage = ["start", "get", "ipPort"]
+computerMessage = ["start", "get", "ipPort", "ok", "reboot"]
+phoneMessage = ["start", "get", "ipPort", "ok", "reboot"]
 detectServerMessage = ["start", "ipPort", "true", "dStart", "dEnd"]
 
 

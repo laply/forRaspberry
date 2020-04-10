@@ -43,9 +43,9 @@ class Control:
 			self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
 			return False 
 			
-	def lastdataClear():
+	def lastdataClear(self):
 		self.detectCheck = self.false
 		self.state == self.false
 
-	def getNowData():
+	def getNowData(self):
 		self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
