@@ -11,6 +11,7 @@ class Button:
 		return self.GPIO.input(self.__pin)
 
 class Control:
+    	
 	def __init__(self, pin, GPIO, topic):
 		self.clear_instance = Button(pin, GPIO)
 		self.topic = topic
