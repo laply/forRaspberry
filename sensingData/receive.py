@@ -68,7 +68,7 @@ class Receive:
 		elif senderMesaage == 3:
 			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
 				sensorDetectControl.lastdataClear()
-				self.topic.setSendMessageTopic(i, sensorDetectControl[i].detectCheck)
+				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
 		
 		elif senderMesaage == 4:
 			os.popen('sudo reboot')
@@ -100,7 +100,7 @@ class Receive:
 		elif senderMesaage == 3:
 			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
 				sensorDetectControl.lastdataClear()
-				self.topic.setSendMessageTopic(i, sensorDetectControl[i].detectCheck)
+				self.topic.setSendMessageTopic(1, i, sensorDetectContro.detectCheck)
 
 		elif senderMesaage == 4:
 			os.popen('sudo reboot')		
