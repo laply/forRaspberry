@@ -96,7 +96,7 @@ class Receive:
 		print("sender is DServer")			
 		if senderMesaage == 0:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
-    			self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo[i])
+ 				self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo[i])
 		elif senderMesaage == 1:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
-    			self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo[i])
+				self.topic.setSendMessageTopic(2, i, self.cameraIpPortInfo[i])
