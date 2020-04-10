@@ -239,6 +239,6 @@ class Control:
 
 		return False
 
-		def getNowData(self):
-			self.topic.setSendMessageTopic(0, self.tempTopicNum, self.lastdataTemp)
-			self.topic.setSendMessageTopic(0, self.humidTopicNum, self.lastdatahumid)
+	def getNowData(self):
+		self.topic.setSendMessageTopic(0, self.tempTopicNum, self.lastdataTemp)
+		self.topic.setSendMessageTopic(0, self.humidTopicNum, self.lastdatahumid)
