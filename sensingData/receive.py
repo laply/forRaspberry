@@ -1,5 +1,4 @@
-	
- class Receive:   
+class Receive:   
 
 	def __init__(self, sensorControl, cameraIpPort, topic):
 		self.sensorControl = sensorControl
