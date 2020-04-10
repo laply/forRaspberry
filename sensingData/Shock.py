@@ -13,23 +13,22 @@ class Shock:
 		return self.GPIO.input(self.__pin)
 
 class Control:
-    
-    true = 1
+	true = 1
 	false = 0
 
-    def __init__(self, pin, GPIO, topic, topicNum):
-        self.shock_instance = Shock(pin, GPIO)
-        self.topic = topic
+	def __init__(self, pin, GPIO, topic, topicNum):
+		self.shock_instance = Shock(pin, GPIO)
+		self.topic = topic
 		self.topicNum = topicNum
-        
-        self.detectCheck = false
+
+		self.detectCheck = false
 		self.state == false
 		self.detectCheckLastTime = ""
 
-    def check(self):
+	def check(self):
 		read = self.shock_instance.read()
 		if read == true and self.detectCheck == false :
-            self.detectCheck = true
+			self.detectCheck = true
 			self.detectCheckLastTime = datetime.datetime.now()
 
 			self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
@@ -43,8 +42,8 @@ class Control:
 			self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
 			return False
 
-    def lastdataClear(self):
-        self.detectCheck = false
+	def lastdataClear(self):
+		self.detectCheck = false
 		self.state == false
 
 	def getNowData(self):
