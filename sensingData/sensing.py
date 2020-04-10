@@ -43,7 +43,7 @@ class Sensing :
 		self.receive.getData(self.raspid)
 
 	def sensingList(self):
-		while i in self.sensorDetectControl :
+		for i in self.sensorDetectControl :
 			data = i.check()
 			if data == True :
 				self.led_instance.write(0)
