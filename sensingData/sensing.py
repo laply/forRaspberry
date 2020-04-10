@@ -16,9 +16,12 @@ class Sensing :
 		self.tHCount = 0
 		self.brokerIpPort = allIpPort[0]
 		self.cameraIpPort = allIpPort[1]
+
 		self.all_pin = sensordata[0]
 		self.useSensor = sensordata[1]
+
 		self.topic = Topic.Topic(self.brokerIpPort, raspid)
+		self.raspid = raspid
 		
 		self.sensorTimerControl = []
 		self.sensorDetectControl = []
