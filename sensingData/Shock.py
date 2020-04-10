@@ -21,13 +21,13 @@ class Control:
 		self.topic = topic
 		self.topicNum = topicNum
 
-		self.detectCheck = false
-		self.state = false
+		self.detectCheck = self.false
+		self.state = self.false
 		self.detectCheckLastTime = ""
 
 	def check(self):
 		read = self.shock_instance.read()
-		if read == true and self.detectCheck == false :
+		if read == true and self.detectCheck == self.false :
 			self.detectCheck = true
 			self.detectCheckLastTime = datetime.datetime.now()
 
@@ -37,14 +37,14 @@ class Control:
 			print("MQTT-send - " + "shock")
 			return True
 
-		elif read == false and self.detectCheck == false and self.state == false:
+		elif read == self.false and self.detectCheck == self.false and self.state == self.false:
 			self.state = true
 			self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
 			return False
 
 	def lastdataClear(self):
-		self.detectCheck = false
-		self.state == false
+		self.detectCheck = self.false
+		self.state == self.false
 
 	def getNowData(self):
 		self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
