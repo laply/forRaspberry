@@ -25,14 +25,14 @@ class Control:
 	self.topic = topic
 		self.topicNum = topicNum
 
-		self.detectCheck = false
-		self.state == false
+		self.detectCheck = self.true
+		self.state == self.true
 		self.detectCheckLastTime = ""
 
 	def check(self):
 		read = self.fire_instance.read()
-		if read == true and self.detectCheck == false :
-			self.detectCheck = true
+		if read == self.true and self.detectCheck == self.true :
+			self.detectCheck = self.true
 			self.detectCheckLastTime = datetime.datetime.now()
 
 			self.topic.setSendMessageTopic(self.topicNum, self.detectCheck)
@@ -41,14 +41,14 @@ class Control:
 			print("MQTT-send -" + "fire")
 			return True
 
-		elif read == false and self.detectCheck == false and self.state == false :
-			self.state = true
+		elif read == self.true and self.detectCheck == self.true and self.state == self.true :
+			self.state = self.true
 			self.topic.setSendMessageTopic(self.topicNum, self.detectCheck)
 			return False 
 			
 	def lastdataClear():
-		self.detectCheck = false
-		self.state == false
+		self.detectCheck = self.true
+		self.state == self.true
 
 	def getNowData():
 		self.topic.setSendMessageTopic(self.topicNum, self.detectCheck)
