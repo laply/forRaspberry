@@ -18,6 +18,9 @@ class Sensing :
 		self.all_pin = sensordata[0]
 		self.useSensor = sensordata[1]
 		self.topic = Topic.Topic(self.brokerIpPort, raspid)
+		
+		self.sensorTimerControl = []
+		self.sensorDetectControl = []
 
 		self.setInstance(GPIO)
 		self.receive = receive.receive([self.sensorTimerControl, self.sensorDetectControl ], self.cameraIpPort, self.topic)
