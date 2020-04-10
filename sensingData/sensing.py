@@ -22,7 +22,7 @@ class Sensing :
 
 		self.topic = Topic.Topic(self.brokerIpPort, raspid)
 		self.raspid = raspid
-		
+
 		self.sensorTimerControl = []
 		self.sensorDetectControl = []
 
@@ -32,9 +32,9 @@ class Sensing :
 
 	def setInstance(self, GPIO):
 		self.sensorTimerControl.append(DHT11.Control(self.all_pin[0], GPIO, self.topic,[0 ,1])) # topic 0 / 0, 1
-		self.sensorDetectControl.append(Fire.Control(self.all_pin[1], GPIO, self.topic, 2)) # topic 1 / 0
-		self.sensorDetectControl.append(Shock.Control(self.all_pin[4], GPIO, self.topic, 3))  # topic 1 / 1
-		self.sensorDetectControl.append(IR.Control(self.all_pin[5], GPIO, self.topic, 4)) #  topic 1 / 2
+		self.sensorDetectControl.append(Fire.Control(self.all_pin[1], GPIO, self.topic, 0)) # topic 1 / 0
+		self.sensorDetectControl.append(Shock.Control(self.all_pin[4], GPIO, self.topic, 1))  # topic 1 / 1
+		self.sensorDetectControl.append(IR.Control(self.all_pin[5], GPIO, self.topic, 2)) #  topic 1 / 2
 
 		# topic 1 / 3 gas
 		# topic 1 / 4 cds 
