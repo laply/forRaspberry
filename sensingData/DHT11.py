@@ -237,5 +237,5 @@ class Control:
 			self.tHCount += 1
 
 	def getNowData(self):
-		self.topic.setSendMessageTopic(0, self.tempTopicNum, self.lastdataTemp)
-		self.topic.setSendMessageTopic(0, self.humidTopicNum, self.lastdatahumid)
+		self.topic.setSendMessageTopic(0, self.tempTopicNum, self.lastdata[0])
+		self.topic.setSendMessageTopic(0, self.humidTopicNum, self.lastdata[1])
