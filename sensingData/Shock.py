@@ -27,7 +27,7 @@ class Control:
 
 	def check(self):
 		read = self.shock_instance.read()
-		if read == true and self.detectCheck == self.false :
+		if read == self.true and self.detectCheck == self.false :
 			self.detectCheck = true
 			self.detectCheckLastTime = datetime.datetime.now()
 
