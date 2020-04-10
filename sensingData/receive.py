@@ -73,7 +73,7 @@ class Receive:
 				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
 		
 		elif senderMesaage == 4:
-			os.popen('sudo reboot')
+			os.popen('sudo reboot').read()
 
 	# phoneMessage = ["start", "get", "IpPort"]
 	def senderIsPhone(self, senderMesaage):
@@ -105,7 +105,7 @@ class Receive:
 				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
 
 		elif senderMesaage == 4:
-			os.popen('sudo reboot')		
+			os.popen('sudo reboot').read()	
 
 	# detectServerMessage = ["start", "IpPort", "true", "dStart", "dEnd"]
 	def senderIsDServer(self, senderMesaage):
