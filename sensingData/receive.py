@@ -32,8 +32,8 @@ class Receive:
 			print(data, messgeSenderindex, messageNum,  message)
 			if data == message :
 				return [messgeSenderindex, messageNum]
-			else :
-				return [messgeSenderindex, ""]
+			
+		return [messgeSenderindex, ""]
 
 	def sender(self, senderData):
 		print("sender Topic")
