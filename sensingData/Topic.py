@@ -20,7 +20,7 @@ class Topic :
         self.connect.setSubscribe(self.raspid + "/"+ topic)
 
     def setSendMessageTopic(self, sensOrNot, num, data):
-        self.connect.setPublish(self.raspid + "/" + self.sendTopic[sensOrNot][sensorNum], data)
+        self.connect.setPublish(self.raspid + "/" + self.sendTopic[sensOrNot][num], data)
 
     def initToSub(self):
         print("MQTT-initTosub")
