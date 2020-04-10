@@ -1,3 +1,6 @@
+import datetime
+# detect
+
 class IR:
 	def __init__(self, pin, GPIO):
 		self.__pin = pin

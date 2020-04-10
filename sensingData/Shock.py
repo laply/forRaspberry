@@ -1,4 +1,5 @@
 import datetime
+# detect
 
 class Shock:
 	def __init__(self, pin, GPIO):

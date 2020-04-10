@@ -31,16 +31,23 @@ class Sensing :
 		self.led_instance.write(1)
 
 	def setInstance(self, GPIO):
-		self.sensorTimerControl.append(DHT11.Control(self.all_pin[0], GPIO, self.topic,[0 ,1])) # topic 0 / 0, 1
-		self.sensorDetectControl.append(Fire.Control(self.all_pin[1], GPIO, self.topic, 0)) # topic 1 / 0
-		self.sensorDetectControl.append(Shock.Control(self.all_pin[4], GPIO, self.topic, 1))  # topic 1 / 1
-		self.sensorDetectControl.append(IR.Control(self.all_pin[5], GPIO, self.topic, 2)) #  topic 1 / 2
-
-		# topic 1 / 3 gas
-		# topic 1 / 4 cds 
-		self.button_instance = Button.Control(self.all_pin[6], GPIO, self.topic)
-		self.led_instance = LED.LED(self.all_pin[3], self.all_pin[2], GPIO)
-
+		if self.sensordata[1][0] :
+			self.sensorTimerControl.append(DHT11.Control(self.all_pin[0], GPIO, self.topic,[0 ,1])) 
+		if self.sensordata[1][1] :
+			self.sensorDetectControl.append(Fire.Control(self.all_pin[1], GPIO, self.topic, 0))
+		if self.sensordata[1][2] :
+			self.sensorDetectControl.append(Shock.Control(self.all_pin[4], GPIO, self.topic, 1)) 
+		if self.sensordata[1][3] :
+			self.sensorDetectControl.append(IR.Control(self.all_pin[5], GPIO, self.topic, 2))
+		if self.sensordata[1][4] :
+			print("set gas sensor")
+		if self.sensordata[1][5] :
+			print("set cds sensor")
+		if self.sensordata[1][6] :
+			self.button_instance = Button.Control(self.all_pin[6], GPIO, self.topic)
+		if self.sensordata[1][7] :
+			self.led_instance = LED.LED(self.all_pin[3], self.all_pin[2], GPIO)
+			self.led_instance.write(1)
 	def sensingStart(self):
 		self.sensingList()
 		self.receive.getData(self.raspid)
@@ -51,8 +58,8 @@ class Sensing :
 
 		for i in self.sensorDetectControl :
 			data = i.check()
-			if data == True :
+			if data == True and self.sensordata[1][7] :
 				self.led_instance.write(0)
-		
-		if self.button_instance.clearButton(self.sensorDetectControl):
+
+		if self.sensordata[1][6] and self.button_instance.clearButton(self.sensorDetectControl):
 			self.led_instance.write(1)
