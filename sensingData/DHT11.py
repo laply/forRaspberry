@@ -216,7 +216,7 @@ class Control:
 		self.tHCount = 0
 
 	def check(self):
-		result = self.instance[0].read()
+		result = self.dht11_instance.read()
 		
 		if result.is_valid():
 			now_time = "Last valid input: " + str(datetime.datetime.now())
