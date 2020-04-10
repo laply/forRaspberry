@@ -17,7 +17,7 @@ class Control:
 	false = 0
 
 	def __init__(self, pin, GPIO, topic, topicNum):
-		self.ir_instance = Fire(pin, GPIO)
+		self.ir_instance = IR(pin, GPIO)
 		self.topic = topic
 		self.topicNum = topicNum
 
