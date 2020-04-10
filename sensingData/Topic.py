@@ -2,7 +2,6 @@ import Connect
 import settingTopic
 
 class Topic :
-    
     sendTopic = settingTopic.sendTopic
     TakeTopic = settingTopic.TakeTopic
     MessageList = settingTopic.MessageList
