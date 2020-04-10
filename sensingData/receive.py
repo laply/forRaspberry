@@ -66,12 +66,12 @@ class Receive:
 				self.topic.setSendMessageTopic(2, i, cameraIpPortInfo)
 
 		elif senderMesaage == 3:
-    		for i, sensorDetectControl in enumerate(self.sensorControl[1]):
-    			sensorDetectControl.lastdataClear()
+			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
+				sensorDetectControl.lastdataClear()
 				self.topic.setSendMessageTopic(i, sensorDetectControl[i].detectCheck)
-    		
+		
 		elif senderMesaage == 4:
-    		os.popen('sudo reboot')
+			os.popen('sudo reboot')
 
 	# phoneMessage = ["start", "get", "IpPort"]
 	def senderIsPhone(self, senderMesaage):
@@ -96,14 +96,14 @@ class Receive:
 		elif senderMesaage == 2:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
 				self.topic.setSendMessageTopic(2, i, cameraIpPortInfo)
-				
+
 		elif senderMesaage == 3:
-        	for i, sensorDetectControl in enumerate(self.sensorControl[1]):
-    			sensorDetectControl.lastdataClear()
+			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
+				sensorDetectControl.lastdataClear()
 				self.topic.setSendMessageTopic(i, sensorDetectControl[i].detectCheck)
-    		
+
 		elif senderMesaage == 4:
-    		os.popen('sudo reboot')		
+			os.popen('sudo reboot')		
 
 	# detectServerMessage = ["start", "IpPort", "true", "dStart", "dEnd"]
 	def senderIsDServer(self, senderMesaage):
