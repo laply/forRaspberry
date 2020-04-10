@@ -1,4 +1,4 @@
-import sensor.*
+from sensor import *
 import datetime
 import time
 import Topic
