@@ -18,7 +18,7 @@ class DHT11Result:
 
 	def is_valid(self):
 		return self.error_code == DHT11Result.ERR_NO_ERROR
-       
+
 class DHT11:
 
 	def __init__(self, pin, GPIO):
@@ -60,7 +60,7 @@ class DHT11:
 
 		# ok, we have valid data, return it
 		return DHT11Result(DHT11Result.ERR_NO_ERROR, the_bytes[2], the_bytes[0])
-    
+
 	def __send_and_sleep(self, output, sleep):
 		self.GPIO.output(self.__pin, output)
 		time.sleep(sleep)
@@ -204,18 +204,18 @@ class DHT11:
 
 class Control:
 
-    def __init__(self, pin, GPIO, topic, topicNum):
-        self.dht11_instance = DHT11(pin, GPIO = GPIO)
+	def __init__(self, pin, GPIO, topic, topicNum):
+		self.dht11_instance = DHT11(pin, GPIO = GPIO)
 		self.topic = topic
 		self.tempTopicNum = topicNum[0]
 		self.humidTopicNum = topicNum[1]
 
 		self.detectCheckLastTime = ""
-        self.lastdata = ["", ""]
+		self.lastdata = ["", ""]
 		
 		self.tHCount = 0
 
-    def check(self):
+	def check(self):
 		result = self.instance[0].read()
 		
 		if result.is_valid():

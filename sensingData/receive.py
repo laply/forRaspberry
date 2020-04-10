@@ -1,12 +1,12 @@
 	
  class Receive:   
-    
-    def __init__(self, sensorControl, cameraIpPort, topic):
-        self.sensorControl = sensorControl
-        self.cameraIpPort = cameraIpPort
-        self.topic = topic
 
-    def getData(self, raspid):
+	def __init__(self, sensorControl, cameraIpPort, topic):
+		self.sensorControl = sensorControl
+		self.cameraIpPort = cameraIpPort
+		self.topic = topic
+
+	def getData(self, raspid):
 		if self.topic.flag == True:
 			print("take Topic")
 			self.topic.flag = False

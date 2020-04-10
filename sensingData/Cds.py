@@ -20,12 +20,12 @@ class Control:
 	true = 1
 	false = 0
 
-    def __init__(self, pin, GPIO, topic, topicNum):
-        self.fire_instance = Fire(pin, GPIO)
-        self.topic = topic
+	def __init__(self, pin, GPIO, topic, topicNum):
+	self.fire_instance = Fire(pin, GPIO)
+	self.topic = topic
 		self.topicNum = topicNum
 
-        self.detectCheck = false
+		self.detectCheck = false
 		self.state == false
 		self.detectCheckLastTime = ""
 
@@ -46,8 +46,8 @@ class Control:
 			self.topic.setSendMessageTopic(self.topicNum, self.detectCheck)
 			return False 
 			
-    def lastdataClear():
-        self.detectCheck = false
+	def lastdataClear():
+		self.detectCheck = false
 		self.state == false
 
 	def getNowData():
