@@ -20,16 +20,16 @@ class Control:
 		self.topicNum = topicNum
 
 		self.detectCheckLastTime = ""
-		self.lastdata = False
+		self.lastdata = 0
 
 	def check(self):
 		read = self.cds_instance.read()
-		if read == False and self.lastdata == False :  
+		if read == False and self.lastdata == 0 :  
 			self.lastdata = 1
 			self.topic.setSendMessageTopic(0, self.topicNum, self.lastdata)
 
 			print("MQTT-send - " + "cds")
-		elif read == False and self.lastdata == False :
+		elif read == False and self.lastdata == 1 :
     		self.lastdata = 0
 			self.topic.setSendMessageTopic(0, self.topicNum, self.lastdata)
 
