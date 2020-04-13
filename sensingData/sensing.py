@@ -44,7 +44,7 @@ class Sensing :
 		if self.useSensor[4] :
 			print("set gas sensor") 
 		if self.useSensor[5] :
-			self.sensorTimerControl.append(Cds.Control(self.all_pin[0], GPIO, self.topic, 2))
+			self.sensorTimerControl.append(Cds.Control(self.all_pin[8], GPIO, self.topic, 2))
 		if self.useSensor[6] :
 			self.button_instance = Button.Control(self.all_pin[6], GPIO, self.topic)
 		if self.useSensor[7] :

@@ -11,6 +11,7 @@ class Cds:
 		self.GPIO.setup(self.__pin, self.GPIO.IN)
 
 	def read(self):
+		return self.GPIO.input(self.__pin)	
     		
 class Control:
 	def __init__(self, pin, GPIO, topic, topicNum):
