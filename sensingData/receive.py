@@ -71,11 +71,10 @@ class Receive:
 			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
 				sensorDetectControl.lastdataClear()
 				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
-		
+			return True	
 		elif senderMesaage == 4:
 			os.popen('sudo reboot').read()
 
-	# phoneMessage = ["start", "get", "IpPort"]
 	def senderIsPhone(self, senderMesaage):
 		print("sender is phone")
 		if senderMesaage == 0:
@@ -103,11 +102,11 @@ class Receive:
 			for i, sensorDetectControl in enumerate(self.sensorControl[1]):
 				sensorDetectControl.lastdataClear()
 				self.topic.setSendMessageTopic(1, i, sensorDetectControl.detectCheck)
+			return True	
 
 		elif senderMesaage == 4:
 			os.popen('sudo reboot').read()	
 
-	# detectServerMessage = ["start", "IpPort", "true", "dStart", "dEnd"]
 	def senderIsDServer(self, senderMesaage):
 		print("sender is DServer")			
 		if senderMesaage == 0:
