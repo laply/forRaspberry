@@ -27,9 +27,8 @@ class Control:
 		if read == False and self.lastdata == 0 :  
 			self.lastdata = 1
 			self.topic.setSendMessageTopic(0, self.topicNum, self.lastdata)
-
 			print("MQTT-send - " + "cds")
-		elif read == False and self.lastdata == 1 :
+		elif read == True and self.lastdata == 1 :
     		self.lastdata = 0
 			self.topic.setSendMessageTopic(0, self.topicNum, self.lastdata)
 
