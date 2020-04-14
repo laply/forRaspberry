@@ -18,11 +18,13 @@ def on_message(client, userdata, msg):
         print("log 1")
         if str(msg.payload) == "plus" :
             print("log 2")
-            loc = loc + 1
+            if loc != 12.5:
+                loc = loc + 1
             p1.ChangeDutyCycle(loc)
         elif str(msg.payload) == "minus":
             print("log 3")
-            loc = loc - 1    
+            if loc != 2.5:
+                loc = loc - 1    
             p1.ChangeDutyCycle(loc)
         
 client = mqtt.Client()
