@@ -17,26 +17,21 @@ GPIO.setup(NT_pin, GPIO.IN)
 GPIO.setup(led_pin1, GPIO.OUT)
 GPIO.setup(led_pin2, GPIO.OUT)
 
-
 try:
-    print("start")
-    client.loop_start()
-    client.publish(topic, "start_test_NTS.py")
+	print("start")
+	client.loop_start()
+	client.publish(topic, "start_test_NTS.py")
 
-    while True:
-	if GPIO.input(NT_pin) == True:
-		GPIO.output(led_pin1, True)
-		GPIO.output(led_pin2, False)
-
-		if flag != "on":
+	while True:
+		if GPIO.input(NT_pin) == True and flag != "on":
+			GPIO.output(led_pin1, True)
+			GPIO.output(led_pin2, False)
 			flag = "on"
 			client.publish(topic, flag)
 			print(flag)
-	else :
-		GPIO.output(led_pin1, False)
-		GPIO.output(led_pin2, True)
-
-		if flag != "off":
+		else GPIO.input(NT_pin) == False and flag != "off":
+			GPIO.output(led_pin1, False)
+			GPIO.output(led_pin2, True)
 			flag = "off"
 			client.publish(topic, flag)
 			print(flag)

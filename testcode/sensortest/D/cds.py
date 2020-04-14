@@ -2,9 +2,9 @@ import RPi.GPIO as GPIO
 import time
 import paho.mqtt.client as mqtt
 
-cds_pin = 24
-led_pin1 = 17
-led_pin2 = 27
+cds_pin = 
+led_pin1 = 23
+led_pin2 = 24
 client = mqtt.Client()
 
 client.connect("115.20.144.97", "11184", 60)
