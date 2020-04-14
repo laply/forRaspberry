@@ -14,9 +14,12 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     print("Topic: " + msg.topic + " Message: " + str(msg.payload))
     if str(msg.topic) == "tcs/move" :
+        print("log 1")
         if str(msg.payload) == "plus" :
+            print("log 2")
             loc = loc + 1
         elif str(msg.payload) == "minus":
+            print("log 3")
             loc = loc - 1    
         p1.ChangeDutyCycle(loc)
         
