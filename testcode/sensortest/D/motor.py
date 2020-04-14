@@ -23,7 +23,7 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-mqtt.connect("124.139.136.86", 1883, 60)
+client.connect("124.139.136.86", 1883, 60)
 
 
 GPIO.setmode(GPIO.BCM)
