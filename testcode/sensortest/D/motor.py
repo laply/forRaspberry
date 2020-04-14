@@ -7,14 +7,15 @@ motor2_pin = 27
 
 loc = 8.5
 def on_connect(client, userdata, rc):
-	client.subscribe("tcs/move")
+    print("connect")
+    client.subscribe("tcs/move")
 
 def on_message(client, userdata, msg):
     print("Topic: " + msg.topic + " Message: " + str(msg.payload))
-    if msg.topic == "tcs/move" :
-        if msg.payload == "plus" :
+    if str(msg.topic) == "tcs/move" :
+        if str(msg.payload) == "plus" :
             loc = loc + 1
-        elif msg.payload == "minus":
+        elif str(msg.payload) == "minus":
             loc = loc - 1    
         p1.ChangeDutyCycle(loc)
         
