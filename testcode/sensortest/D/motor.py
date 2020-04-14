@@ -6,7 +6,8 @@ motor1_pin = 17
 motor2_pin = 27
 
 loc = 8.5
-def on_connect(client, userdata, rc):
+
+def on_connect(client, userdata, flags, rc):
     print("connect")
     client.subscribe("tcs/move")
 
@@ -38,6 +39,7 @@ p1.start(0)
 p2.start(0)
 
 try:
+    print("start")
     p1.ChangeDutyCycle(loc)
     client.loop_forever()
 
