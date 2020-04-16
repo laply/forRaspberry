@@ -205,7 +205,7 @@ class DHT11:
 class Control:
 
 	def __init__(self, pin, GPIO, topic, topicNum):
-		self.dht11_instance = DHT11(pin, GPIO = GPIO)
+		self.dht11_instance = DHT11(pin, GPIO)
 		self.topic = topic
 		self.tempTopicNum = topicNum[0]
 		self.humidTopicNum = topicNum[1]
