@@ -15,7 +15,7 @@ if cameraLocalIp == cameraGlobalIp:
 	cameraIpPort = [cameraGlobalIp, setting.cameraGlobalport, cameraLocalIp]
 else :
 	cameraIpPort = [cameraGlobalIp, setting.cameraLocalport, cameraLocalIp]
-	
+
 #cameraCheck = os.system('sh /home/pi/raspstart/mjpg.sh &') ##
 
 allIpPort = [setting.brokerIpPort, cameraIpPort]
@@ -27,7 +27,7 @@ mainInstance = sensing.Sensing(GPIO, allIpPort, setting.raspid, setting.sensorda
 # mainInstance = testNoPin.Sensor(GPIO, brokerIpPort, cameraIpPort)
 
 def startToSensing():
-		mainInstance.sensingStart()
+	mainInstance.sensingStart()
 
 try:
 	print("start")

@@ -12,10 +12,10 @@ class Cds:
 
 	def read(self):
 		return self.GPIO.input(self.__pin)	
-    		
+
 class Control:
 	def __init__(self, pin, GPIO, topic, topicNum):
-    	self.cds_instance = Cds(pin, GPIO)
+		self.cds_instance = Cds(pin, GPIO)
 		self.topic = topic
 		self.topicNum = topicNum
 
@@ -29,7 +29,7 @@ class Control:
 			self.topic.setSendMessageTopic(0, self.topicNum, self.lastdata)
 			print("MQTT-send - " + "cds")
 		elif read == True and self.lastdata == 1 :
-    		self.lastdata = 0
+			self.lastdata = 0
 			self.topic.setSendMessageTopic(0, self.topicNum, self.lastdata)
 
 			print("MQTT-send - " + "cds")

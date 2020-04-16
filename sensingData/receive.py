@@ -1,5 +1,4 @@
 import os
-
 class Receive:   
 
 	def __init__(self, sensorControl, cameraIpPort, topic):
@@ -43,6 +42,8 @@ class Receive:
 			self.senderIsPhone(senderData[1])
 		elif senderData[0] == 2:
 			self.senderIsDServer(senderData[1])
+		elif senderData[0] == 3:
+			self.senderIsMove(senderData[1])
 
 	def senderIsCom(self, senderMesaage):
 		print("sender is com")
@@ -108,10 +109,14 @@ class Receive:
 			os.popen('sudo reboot').read()	
 
 	def senderIsDServer(self, senderMesaage):
-		print("sender is DServer")			
+		print("sender is DServer")		
 		if senderMesaage == 0:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
- 				self.topic.setSendMessageTopic(2, i, cameraIpPortInfo)
+				self.topic.setSendMessageTopic(2, i, cameraIpPortInfo)
 		elif senderMesaage == 1:
 			for i, cameraIpPortInfo in enumerate(self.cameraIpPort):
 				self.topic.setSendMessageTopic(2, i, cameraIpPortInfo)
+	
+	def senderIsMove(self, senderMesaage):
+		print("sender send to Move")
+		self.sensorControl.write(senderMesaage)
