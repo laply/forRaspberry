@@ -60,17 +60,20 @@ class Sensing :
 		self.reciveControl = self.receive.getData(self.raspid)
 
 	def sensingList(self):
-		for i in self.sensorTimerControl :
-			i.check()
-
-		for i in self.sensorDetectControl :
-			data = i.check()
-			if data == 1 and self.useSensor[7] :
-				self.led_instance.write(0)
-
-		if self.useSensor[6] and self.button_instance.clearButton(self.sensorDetectControl):
-			self.led_instance.write(1)
-		
-		if self.reciveControl :
-			self.reciveControl = False 
-			self.led_instance.write(1)
+		try:
+			for i in self.sensorTimerControl :
+				i.check()
+	
+			for i in self.sensorDetectControl :
+				data = i.check()
+				if data == 1 and self.useSensor[7] :
+					self.led_instance.write(0)
+	
+			if self.useSensor[6] and self.button_instance.clearButton(self.sensorDetectControl):
+				self.led_instance.write(1)
+			
+			if self.reciveControl :
+				self.reciveControl = False 
+				self.led_instance.write(1)
+		except KeyboardInterrupt:
+			self.GPIO.cleanup()		

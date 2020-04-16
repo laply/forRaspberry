@@ -3,7 +3,6 @@ class SG90:
     loc1 = 7.5
     loc2 = 10.5
 
-
     def __init__(self, motor_1, motor_2, GPIO):
         self.GPIO = GPIO
         self.__pin_motor1 = motor_1
@@ -15,8 +14,8 @@ class SG90:
             self.GPIO.setup(self.__pin_motor1, self.GPIO.OUT)
             self.GPIO.setup(self.__pin_motor2, self.GPIO.OUT)
 
-            self.p1 = GPIO.PWM(__pin_motor1, 50)
-            self.p2 = GPIO.PWM(__pin_motor2, 50)
+            self.p1 = self.GPIO.PWM(__pin_motor1, 50)
+            self.p2 = self.GPIO.PWM(__pin_motor2, 50)
 
             self.p1.start(0)
             self.p2.start(0)
