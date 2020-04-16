@@ -16,6 +16,7 @@ class Sensing :
 
 	def __init__(self, GPIO, allIpPort, raspid, sensordata):
 		self.tHCount = 0
+		self.GPIO = GPIO
 		self.brokerIpPort = allIpPort[0]
 		self.cameraIpPort = allIpPort[1]
 
