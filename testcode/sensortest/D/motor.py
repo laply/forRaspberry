@@ -10,7 +10,7 @@ loc2 = 8.5
 
 def on_connect(client, userdata, flags, rc):
     print("connect")
-    client.subscribe("tcs/move")
+    client.subscribe("tcs/rasp/move")
 
 def on_message(client, userdata, msg):
     global loc1
@@ -54,7 +54,8 @@ p2.start(0)
 
 try:
     print("start")
-    p1.ChangeDutyCycle(loc)
+    p1.ChangeDutyCycle(loc1)
+    p2.ChangeDutyCycle(loc2)
     client.loop_forever()
 
 
