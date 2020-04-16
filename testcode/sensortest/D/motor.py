@@ -6,7 +6,7 @@ motor1_pin = 17
 motor2_pin = 27
 
 loc1 = 8.5
-loc2 = 8.5
+loc2 = 10.5
 
 def on_connect(client, userdata, flags, rc):
     print("connect")
@@ -29,7 +29,7 @@ def on_message(client, userdata, msg):
                 loc2 = loc2 + 1
             p2.ChangeDutyCycle(loc2)
         elif str(msg.payload) == "down":
-            if loc2 != 2.5:
+            if loc2 != 5.5:
                 loc2 = loc2 - 1    
             p2.ChangeDutyCycle(loc2)
 
