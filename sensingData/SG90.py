@@ -5,8 +5,8 @@ class SG90:
 
     def __init__(self, motor_1, motor_2, GPIO):
         self.GPIO = GPIO
-        self.__pin_motor1 = motor_1
-        self.__pin_motor2 = motor_2
+        self.pin_motor1 = motor_1
+        self.pin_motor2 = motor_2
         self.setting()
 
     def setting(self):
