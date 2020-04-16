@@ -5,7 +5,7 @@ import paho.mqtt.client as mqtt
 motor1_pin = 17
 motor2_pin = 27
 
-loc1 = 8.5
+loc1 = 7.5
 loc2 = 10.5
 
 def on_connect(client, userdata, flags, rc):
@@ -17,19 +17,19 @@ def on_message(client, userdata, msg):
     global loc2   
     if str(msg.topic) == "tcs/rasp/move" :
         if str(msg.payload) == "plus" :
-            if loc1 != 12.5:
+            if loc1 != 10.5:
                 loc1 = loc1 + 1
             p1.ChangeDutyCycle(loc1)
         elif str(msg.payload) == "minus":
-            if loc1 != 2.5:
+            if loc1 != 5.5:
                 loc1 = loc1 - 1    
             p1.ChangeDutyCycle(loc1)
-        elif str(msg.payload) == "up" :
+        elif str(msg.payload) == "down" :
             if loc2 != 11.5:
                 loc2 = loc2 + 1
             p2.ChangeDutyCycle(loc2)
-        elif str(msg.payload) == "down":
-            if loc2 != 5.5:
+        elif str(msg.payload) == "up":
+            if loc2 != 6.5:
                 loc2 = loc2 - 1    
             p2.ChangeDutyCycle(loc2)
 
