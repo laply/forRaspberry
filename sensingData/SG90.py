@@ -44,6 +44,3 @@ class SG90:
             if self.loc2 != 6.5:
                 self.loc2 = self.loc2 - 1    
             self.p2.ChangeDutyCycle(self.loc2)
-        
-
-
