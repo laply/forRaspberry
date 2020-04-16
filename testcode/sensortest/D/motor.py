@@ -25,7 +25,7 @@ def on_message(client, userdata, msg):
                 loc1 = loc1 - 1    
             p1.ChangeDutyCycle(loc1)
         elif str(msg.payload) == "up" :
-            if loc2 != 12.5:
+            if loc2 != 11.5:
                 loc2 = loc2 + 1
             p2.ChangeDutyCycle(loc2)
         elif str(msg.payload) == "down":
