@@ -15,17 +15,16 @@ class Gas:
 
 	def read(self):
 		return self.GPIO.input(self.__pin)
-
 class Control:
 	true = 1
 	false = 0
 
-    def __init__(self, pin, GPIO, topic, topicNum):
-        self.fire_instance = Fire(pin, GPIO)
-        self.topic = topic
+	def __init__(self, pin, GPIO, topic, topicNum):
+		self.fire_instance = Gas(pin, GPIO)
+		self.topic = topic
 		self.topicNum = topicNum
 
-        self.detectCheck = self.false
+		self.detectCheck = self.false
 		self.state = self.false
 		self.detectCheckLastTime = ""
 
@@ -45,10 +44,10 @@ class Control:
 			self.state = self.true
 			self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
 			return False 
-			
-    def lastdataClear():
-        self.detectCheck = self.false
+
+	def lastdataClear(self):
+		self.detectCheck = self.false
 		self.state == self.false
 
-	def getNowData():
+	def getNowData(self):
 		self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
