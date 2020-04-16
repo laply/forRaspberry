@@ -16,9 +16,9 @@ try:
 
     while True:
 
-	p2.ChangeDutyCycle(5.0)
+	p2.ChangeDutyCycle(10.0)
 	time.sleep(1)
-	p2.ChangeDutyCycle(6.0)
+	p2.ChangeDutyCycle(11.0)
 	time.sleep(1)
 
 
