@@ -20,5 +20,5 @@ sensordata = [all_pin, useSensor]
 # brokerIpPort = ["124.139.136.86", "1883"]
 
 # test server IP
-#brokerIpPort = ["115.20.144.97", "11183"]
+#brokerIpPort = ["115.20.144.97", "11183"]ttt
 

@@ -76,5 +76,6 @@ class Sensing :
 			if self.reciveControl :
 				self.reciveControl = False 
 				self.led_instance.write(1)
+				
 		except KeyboardInterrupt:
 			self.GPIO.cleanup()		
