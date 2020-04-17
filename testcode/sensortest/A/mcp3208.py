@@ -12,12 +12,13 @@ def analog_read(channel):
 
 try :
     while True:
-
-        reading0 = analog_read(0)
-        voltage0 = reading0 * 3.3 / 1024
-
-        print("Reading1=%d - Voltage=%f" % (reading0, voltage0))
-
+        num = 0
+        reading = [analog_read(0), analog_read(1), analog_read(2), analog_read(3)]
+        voltage = [reading[0] * 3.3 / 1024, reading[1] * 3.3 / 1024, reading[2] * 3.3 / 1024, reading[3] * 3.3 / 1024]
+        
+        for i in reading :
+            print("Reading1=%d - Voltage=%f" % (reading[num], voltage[num]))
+            num = num + 1
         time.sleep(2)
 
 except KeyboardInterrupt:
