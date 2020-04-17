@@ -21,7 +21,8 @@ class Sensing :
 		self.cameraIpPort = allIpPort[1]
 
 		self.all_pin = sensordata[0]
-		self.useSensor = sensordata[1]
+		self.adc_pin = sensordata[1]
+		self.useSensor = sensordata[2]
 
 		self.topic = Topic.Topic(self.brokerIpPort, raspid)
 		self.raspid = raspid
@@ -30,7 +31,7 @@ class Sensing :
 		self.sensorTimerControl = []
 		self.sensorDetectControl = []
 		self.sensorMoveControl = []
-
+		
 		self.setInstance(GPIO)
 		self.receive = receive.Receive([self.sensorTimerControl, self.sensorDetectControl, self.sensorMoveControl], self.cameraIpPort, self.topic)
 		self.led_instance.write(1)
@@ -45,6 +46,7 @@ class Sensing :
 		if self.useSensor[3] :
 			self.sensorDetectControl.append(IR.Control(self.all_pin[5], GPIO, self.topic, 2))
 		if self.useSensor[4] :
+    		self.adc_pin[0]
 			print("set gas sensor") 
 		if self.useSensor[5] :
 			self.sensorTimerControl.append(Cds.Control(self.all_pin[8], GPIO, self.topic, 2))

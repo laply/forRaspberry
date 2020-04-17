@@ -2,7 +2,7 @@ import datetime
 # detect
 
 class Fire:
-	def __init__(self, pin, GPIO):
+    	def __init__(self, pin, GPIO):
 		self.__pin = pin
 		self.GPIO = GPIO
 		self.setting()

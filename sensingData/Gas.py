@@ -1,23 +1,13 @@
 import datetime
+import mcp3208
 # detect
 
-def gasCheck(self):
-	print("gas")
 
-class Gas:
-	def __init__(self, pin, GPIO):
-		self.__pin = pin
-		self.GPIO = GPIO
-		self.setting()
-
-	def setting(self):
-		self.GPIO.setup(self.__pin, self.GPIO.IN)
-
-	def read(self):
-		return self.GPIO.input(self.__pin)
 class Control:
 	true = 1
 	false = 0
+
+	self.AnalogSensing = mcp3208.MCP3028()
 
 	def __init__(self, pin, GPIO, topic, topicNum):
 		self.fire_instance = Gas(pin, GPIO)

@@ -3,7 +3,7 @@ import time
 
 spi = spidev.SpiDev()
 
-spi.open(0,0)
+spi.open(0, 1)
 
 def analog_read(channel):
     r = spi.xfer2([1, (8 + channel) << 4, 0])
