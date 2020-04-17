@@ -22,7 +22,5 @@ try :
 
         print("")
 
-        time.sleep(2)
-
 except KeyboardInterrupt:
     spi.close()
