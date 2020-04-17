@@ -13,13 +13,14 @@ def analog_read(channel):
 try :
     while True:
         num = 0
-        reading = [analog_read(0), analog_read(1), analog_read(2), analog_read(3)]
-        voltage = [reading[0] * 3.3 / 1024, reading[1] * 3.3 / 1024, reading[2] * 3.3 / 1024, reading[3] * 3.3 / 1024]
+        reading = [analog_read(0), analog_read(1)]
+        voltage = [reading[0] * 3.3 / 1024, reading[1] * 3.3 / 1024]
         
         for i in reading :
-            print("Reading %d =%d - Voltage=%f" % (num , reading[num], voltage[num]))
-            print("")
+            print("Reading %d = %d - Voltage = %f" % (num , reading[num], voltage[num]))
             num = num + 1
+
+        print("")
 
         time.sleep(2)
 
