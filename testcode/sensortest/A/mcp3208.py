@@ -21,6 +21,7 @@ try :
             num = num + 1
 
         print("")
+        time.sleep(1)
 
 except KeyboardInterrupt:
     spi.close()
