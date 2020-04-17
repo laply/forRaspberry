@@ -17,8 +17,10 @@ try :
         voltage = [reading[0] * 3.3 / 1024, reading[1] * 3.3 / 1024, reading[2] * 3.3 / 1024, reading[3] * 3.3 / 1024]
         
         for i in reading :
-            print("Reading1=%d - Voltage=%f" % (reading[num], voltage[num]))
+            print("Reading %d =%d - Voltage=%f" % (num , reading[num], voltage[num]))
+            print("")
             num = num + 1
+
         time.sleep(2)
 
 except KeyboardInterrupt:
