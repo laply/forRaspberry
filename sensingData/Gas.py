@@ -16,6 +16,8 @@ class Control:
 	# conv analog data 
 	def dataConvt(self):
 		read = self.gas_instance.analogRead()
+		print(read)
+		
 		if read > 300 :
 			return True
 		else :
@@ -23,8 +25,6 @@ class Control:
 
 	def check(self):
 		read = self.dataConvt()
-
-		print(read)
 		if read == True and self.detectCheck == False:
 			self.detectCheck = True
 			self.detectCheckLastTime = datetime.datetime.now()
