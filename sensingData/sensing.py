@@ -36,7 +36,6 @@ class Sensing :
 		
 		self.setInstance(GPIO)
 		self.receive = receive.Receive([self.sensorTimerControl, self.sensorDetectControl, self.sensorMoveControl], self.cameraIpPort, self.topic)
-		self.led_instance.write(1)
 
 	def setInstance(self, GPIO):
 		if self.useSensor[0] :
@@ -70,6 +69,7 @@ class Sensing :
 	
 			for i in self.sensorDetectControl :
 				data = i.check()
+				print(i,", ", data)
 				if data == 1 and self.useSensor[7] :
 					self.led_instance.write(0)
 	
