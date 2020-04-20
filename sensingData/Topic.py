@@ -18,8 +18,8 @@ class Topic :
     def setTakeMassageTopic(self, topic):
         self.connect.setSubscribe(self.raspid + "/"+ topic)
 
-    def setSendMessageTopic(self, sensOrNot, num, data):
-        self.connect.setPublish(self.raspid + "/" + self.sendTopic[sensOrNot][num], data)
+    def setSendMessageTopic(self, index1, index2, data):
+        self.connect.setPublish(self.raspid + "/" + self.sendTopic[index1][index2], data)
 
     def initToSub(self):
         print("MQTT-initTosub")
