@@ -80,7 +80,7 @@ class Sensing :
 					self.led_instance.write(1)
 			else :
 				if self.useSensor[6] and self.button_instance.clearButtonDown(self.sensorDetectControl):
-    				self.led_instance.write(1)
+					self.led_instance.write(1)
 			
 			if self.reciveControl :
 				self.reciveControl = False 
