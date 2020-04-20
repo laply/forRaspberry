@@ -15,7 +15,7 @@ class Control:
 
 	# conv analog data 
 	def dataConvt(self):
-		read = self.gas_instance.read()
+		read = self.gas_instance.analogRead()
 		if read > 300 :
 			return True
 		else :
