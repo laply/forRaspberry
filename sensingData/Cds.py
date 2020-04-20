@@ -28,11 +28,13 @@ class Control:
 			self.lastdata = 1
 			self.topic.setSendMessageTopic(0, self.topicNum, self.lastdata)
 			print("MQTT-send - " + "cds")
+			return False
 		elif read == True and self.lastdata == 1 :
 			self.lastdata = 0
 			self.topic.setSendMessageTopic(0, self.topicNum, self.lastdata)
 
 			print("MQTT-send - " + "cds")
+			return True
 
 
 	def getNowData(self):
