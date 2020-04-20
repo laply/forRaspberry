@@ -6,7 +6,7 @@ class MCP3208 :
         self.spi = spidev.SpiDev()
         self.usePin = usePin
         self.spi.open(0, 1)
-        self.max_speed_hz = 1000000
+        self.spi.max_speed_hz = 1000000
 
     def analogRead(self):
         r = self.spi.xfer2([1, (8 + self.usePin) << 4, 0])
