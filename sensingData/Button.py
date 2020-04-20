@@ -30,7 +30,7 @@ class Control:
 			return True
 	
 	def clearButtonUp(self, sensorDetectControl):
-    	read = self.clear_instance.read()
+		read = self.clear_instance.read()
 
 		if read == 1:
 			for i in range(0, len(sensorDetectControl)):
