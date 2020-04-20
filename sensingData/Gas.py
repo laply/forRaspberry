@@ -22,7 +22,7 @@ class Control:
 			return False
 
 	def check(self):
-		read = dataConvt()
+		read = self.dataConvt()
 
 		if read == True and self.detectCheck == False:
 			self.detectCheck = True
