@@ -8,6 +8,8 @@ import Shock
 import Fire
 import Cds
 import IR
+
+import Gas
 import Button
 import LED
 import SG90
@@ -38,7 +40,7 @@ class Sensing :
 
 	def setInstance(self, GPIO):
 		if self.useSensor[0] :
-			self.sensorTimerControl.append(DHT11.Control(self.all_pin[0], GPIO, self.topic,[0 ,1])) 
+			self.sensorTimerControl.append(DHT11.Control(self.all_pin[0], GPIO, self.topic,[0, 1])) 
 		if self.useSensor[1] :
 			self.sensorDetectControl.append(Fire.Control(self.all_pin[1], GPIO, self.topic, 0))
 		if self.useSensor[2] :
@@ -46,8 +48,7 @@ class Sensing :
 		if self.useSensor[3] :
 			self.sensorDetectControl.append(IR.Control(self.all_pin[5], GPIO, self.topic, 2))
 		if self.useSensor[4] :
-			self.adc_pin[0]
-			print("set gas sensor") 
+			self.sensorDetectControl.append(Gas.Control(self.adc_pin[0], self.topic, 3))
 		if self.useSensor[5] :
 			self.sensorTimerControl.append(Cds.Control(self.all_pin[7], GPIO, self.topic, 2))
 		if self.useSensor[6] :
@@ -72,9 +73,7 @@ class Sensing :
 				if data == 1 and self.useSensor[7] :
 					self.led_instance.write(0)
 	
-
 			# cds camera Control
-			
 			if self.useSensor[6] and self.button_instance.clearButton(self.sensorDetectControl):
 				self.led_instance.write(1)
 			

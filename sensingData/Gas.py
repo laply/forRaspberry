@@ -6,7 +6,7 @@ class Control:
 
 	self.AnalogSensing = mcp3208.MCP3028()
 
-	def __init__(self, pin, GPIO, topic, topicNum):
+	def __init__(self, pin, topic, topicNum):
 		self.gas_instance = mcp3208(pin)
 		self.topic = topic
 		self.topicNum = topicNum
@@ -18,7 +18,10 @@ class Control:
 	# conv analog data 
 	def dataConvt(self):
 		read = self.fire_instance.read()
-		return read
+		if read > 300 :
+    		return True
+		else :
+			return False
 
 	def check(self):
 		read = dataConvt()
