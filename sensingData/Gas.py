@@ -5,7 +5,7 @@ import mcp3208
 class Control:
 
 	def __init__(self, pin, topic, topicNum):
-		self.gas_instance = mcp3208.mcp3208(pin)
+		self.gas_instance = mcp3208.MCP3208(pin)
 		self.topic = topic
 		self.topicNum = topicNum
 

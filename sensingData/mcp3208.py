@@ -2,7 +2,6 @@ import spidev
 import time
 
 class MCP3208 :
-    
     def __init__(self, usePin):
         self.spi = spidev.SpiDev()
         self.usePin = usePin
