@@ -69,7 +69,6 @@ class Sensing :
 	
 			for i in self.sensorDetectControl :
 				data = i.check()
-				print(i,", ", data)
 				if data == 1 and self.useSensor[7] :
 					self.led_instance.write(0)
 	
