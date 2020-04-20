@@ -19,7 +19,7 @@ class Control:
 	def dataConvt(self):
 		read = self.fire_instance.read()
 		if read > 300 :
-    		return True
+			return True
 		else :
 			return False
 
