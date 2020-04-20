@@ -17,6 +17,7 @@ all_pin = [22, 25, 24, 23, 27, 16, 26, 5, 20, 21]
 	# shock_pin = 27 / ir_sensor_pin = 16 / button_pin = 26
 	# cds_pin = 5 / motor_pin_1 = 20 / motor_pin_2 = 21
 
+
 sensordata = [all_pin, adc_pin, useSensor]
 
 # dev server IP
