@@ -30,5 +30,5 @@ class Connect :
     def setOnMessage(self, on_message):
         self.client.on_message = on_message
 
-    def setWill(self, topic):    
-        self.client.will_set(topic, "off", qos=0, retain=False)    
+    def setWill(self, topic):
+        self.client.will_set(topic, "off", qos=0, retain=False)
