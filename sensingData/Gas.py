@@ -15,7 +15,7 @@ class Control:
 		self.state = False
 		self.detectCheckLastTime = ""
 
-	# 아날로그 값에 대한 처리 하는 메소드 
+	# conv analog data 
 	def dataConvt(self):
 		read = self.fire_instance.read()
 		return read
