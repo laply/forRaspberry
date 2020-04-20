@@ -6,8 +6,9 @@ sensorTimerTopic = ["tcs/rasp/temp", "tcs/rasp/humid"]
 sensorDetectTopic = ["tcs/rasp/fire", "tcs/rasp/shock", "tcs/rasp/ir", "tcs/rasp/gas", "tcs/rasp/cds"]
 
 IpPortTopic = ["tcs/rasp/localIp", "tcs/rasp/cameraPort", "tcs/rasp/localIpUnder"]
+onOffTopic = ["tcs/rasp/onOff"]
 
-sendTopic = [sensorTimerTopic, sensorDetectTopic, IpPortTopic]
+sendTopic = [sensorTimerTopic, sensorDetectTopic, IpPortTopic, onOffTopic]
 
 TakeTopic = ["tcs/com", "tcs/phone", "tcs/detectServer", "tcs/rasp/move"]
 

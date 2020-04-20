@@ -12,10 +12,10 @@ cameraLocalport = "8891"
 useSensor = [True, True, True, True, False, False, True, True, True ]
  # dht11 / fire / shock / ir / gas / cds / button / led / motor
 
+# ADC 사용 [7, 9, 10, 11]
 adc_pin = [3]
 	# gas_adc_pin = 3 
 
-# can use ADC 사용 [7, 9, 10, 11]
 all_pin = [22, 25, 24, 23, 27, 16, 26, 5, 20, 21]
 	# dht11_pin = 22 / fire_pin = 25 / led_red_pin = 24 / led_green_pin = 23
 	# shock_pin = 27 / ir_sensor_pin = 16 / button_pin = 26 

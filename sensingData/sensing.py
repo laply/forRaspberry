@@ -72,6 +72,9 @@ class Sensing :
 				if data == 1 and self.useSensor[7] :
 					self.led_instance.write(0)
 	
+
+			# ir 값에 따라 카메라 변화 처리 
+			
 			if self.useSensor[6] and self.button_instance.clearButton(self.sensorDetectControl):
 				self.led_instance.write(1)
 			

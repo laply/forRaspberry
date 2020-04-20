@@ -2,42 +2,45 @@ import datetime
 import mcp3208
 # detect
 
-
 class Control:
-	true = 1
-	false = 0
 
 	self.AnalogSensing = mcp3208.MCP3028()
 
 	def __init__(self, pin, GPIO, topic, topicNum):
-		self.fire_instance = Gas(pin, GPIO)
+		self.gas_instance = mcp3208(pin)
 		self.topic = topic
 		self.topicNum = topicNum
 
-		self.detectCheck = self.false
-		self.state = self.false
+		self.detectCheck = False
+		self.state = False
 		self.detectCheckLastTime = ""
 
-	def check(self):
+	# 아날로그 값에 대한 처리 하는 메소드 
+	def dataConvt(self):
 		read = self.fire_instance.read()
-		if read == self.true and self.detectCheck == self.false :
-			self.detectCheck = self.true
+		return read
+
+	def check(self):
+		read = dataConvt()
+
+		if read == True and self.detectCheck == False:
+			self.detectCheck = True
 			self.detectCheckLastTime = datetime.datetime.now()
 
 			self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
 
 			print(datetime.datetime.now())
-			print("MQTT-send -" + "fire")
+			print("MQTT-send -" + "gas")
 			return True
 
-		elif read == self.false and self.detectCheck == self.false and self.state == self.false :
-			self.state = self.true
+		elif read == False and self.detectCheck == False and self.state == False :
+			self.state = True
 			self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
 			return False 
 
 	def lastdataClear(self):
-		self.detectCheck = self.false
-		self.state == self.false
+		self.detectCheck = False
+		self.state == False
 
 	def getNowData(self):
 		self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
