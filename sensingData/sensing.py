@@ -26,6 +26,7 @@ class Sensing :
 		self.all_pin = sensordata[0]
 		self.adc_pin = sensordata[1]
 		self.useSensor = sensordata[2]
+		self.ButtonUpDown = sensordata[3]
 
 		self.topic = Topic.Topic(self.brokerIpPort, raspid)
 		self.raspid = raspid
@@ -74,8 +75,12 @@ class Sensing :
 					self.led_instance.write(0)
 	
 			# cds camera Control
-			if self.useSensor[6] and self.button_instance.clearButton(self.sensorDetectControl):
-				self.led_instance.write(1)
+			if self.ButtonUpDown :
+				if self.useSensor[6] and self.button_instance.clearButtonUp(self.sensorDetectControl):
+					self.led_instance.write(1)
+			else :
+				if self.useSensor[6] and self.button_instance.clearButtonDown(self.sensorDetectControl):
+    				self.led_instance.write(1)
 			
 			if self.reciveControl :
 				self.reciveControl = False 

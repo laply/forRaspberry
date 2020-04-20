@@ -9,7 +9,7 @@ useSensor = [True, True, True, True, False, False, True, True, True ]
  # dht11 / fire / shock / ir / gas / cds / button / led / motor
 
 # use ADC [7, 9, 10, 11]
-adc_pin = [3]
+adc_pin = [0]
 	# gas_adc_pin = 3
 
 all_pin = [22, 25, 24, 23, 27, 16, 26, 5, 20, 21]
