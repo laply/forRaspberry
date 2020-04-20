@@ -8,8 +8,8 @@ class MCP3208 :
         self.spi.open(0, 1)
         self.max_speed_hz = 1000000
 
-    def analogRead(self, channel):
-        r = self.spi.xfer2([1, (8 + channel) << 4, 0])
+    def analogRead(self):
+        r = self.spi.xfer2([1, (8 + self.usePin) << 4, 0])
         adc_out = ((r[1]&3) << 8) + r[2]
         return adc_out
 
