@@ -29,6 +29,8 @@ class SG90:
 
 
     def afterUse(self):
+        self.p1.stop()
+        self.p2.stop()
         self.GPIO.setup(self.pin_motor1, self.GPIO.IN)
         self.GPIO.setup(self.pin_motor2, self.GPIO.IN)
 
@@ -40,6 +42,7 @@ class SG90:
         
         self.p1.start(0)
         self.p2.start(0)
+
         if i == 0 : # plus
             if self.loc1 != 10.5:
                 self.loc1 = self.loc1 + 1
