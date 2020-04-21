@@ -9,7 +9,7 @@ useSensor = [True, 0, 0, 0, 1, 0, True, True, True, 1]
  # dht11 / fire / shock / ir / gas / cds / button / led / motor / pm2008
 
 
-ButtonUpDown = False
+ButtonUpDown = True
 # use ADC [7, 9, 10, 11]
 
 adc_pin = [0]
