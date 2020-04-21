@@ -6,11 +6,12 @@ cameraGlobalport = "8891"
 cameraLocalport = "8891"
 
 useSensor = [True, True, True, True, False, False, True, True, True ]
- # dht11 / fire / shock / ir / gas / cds / button / led / motor
+ # dht11 / fire / shock / ir / gas / cds / button / led / motor / pm2008
 
 
 ButtonUpDown = False
 # use ADC [7, 9, 10, 11]
+
 adc_pin = [0]
 	# gas_adc_pin = 3
 

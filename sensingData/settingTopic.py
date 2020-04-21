@@ -2,7 +2,7 @@
 # raspid + "/" + Topic
 # topic - id/sendTopic
 
-sensorTimerTopic = ["tcs/rasp/temp", "tcs/rasp/humid",  "tcs/rasp/cds"]
+sensorTimerTopic = ["tcs/rasp/temp", "tcs/rasp/humid",  "tcs/rasp/cds", "tcs/rasp/pm10", "tcs/rasp/pm2p5"]
 sensorDetectTopic = ["tcs/rasp/fire", "tcs/rasp/shock", "tcs/rasp/ir", "tcs/rasp/gas"]
 
 IpPortTopic = ["tcs/rasp/localIp", "tcs/rasp/cameraPort", "tcs/rasp/localIpUnder"]
