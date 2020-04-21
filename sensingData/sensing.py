@@ -19,6 +19,7 @@ import SG90
 class Sensing :
 
 	def __init__(self, GPIO, allIpPort, raspid, sensordata):
+		print("sensing init")
 		self.tHCount = 0
 		self.GPIO = GPIO
 		self.brokerIpPort = allIpPort[0]
@@ -45,8 +46,9 @@ class Sensing :
 		self.receive = receive.Receive([self.sensorTimerControl, self.sensorDetectControl, self.sensorMoveControl], self.cameraIpPort, self.topic)
 
 	def setInstance(self, GPIO):
+		print("set Instance")
 		if self.useSensor[0] :
-			self.sensorTimerControl.append(DHT11.Control(self.all_pin[0], GPIO, self.topic,[0, 1]))
+			self.sensorTimerControl.append(DHT11.Control(self.all_pin[0], GPIO, self.topic, [0, 1]))
 			self.sensorTimerControlIndex.append(0)
 			self.sensorTimerControlIndex.append(1)
 		if self.useSensor[1] :
@@ -72,7 +74,7 @@ class Sensing :
 		if self.useSensor[8] :
 			self.sensorMoveControl.append(SG90.SG90(self.all_pin[8], self.all_pin[9], GPIO))
 		if self.useSensor[9] :
-			self.sensorTimerControl.append(PM2008M.Control(self.topic, [3, 4]))
+			self.sensorTimerControl.append(PM2008M.Control(self.topic,[3, 4]))
 			self.sensorTimerControlIndex.append(3)
 			self.sensorTimerControlIndex.append(4)   			
 
@@ -81,6 +83,7 @@ class Sensing :
 		self.reciveControl = self.receive.getData(self.raspid)
 
 	def sensingList(self):
+		print("sensing..")
 		try:
 			for i in self.sensorTimerControl :
 				i.check()
