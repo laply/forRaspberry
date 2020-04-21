@@ -7,10 +7,9 @@ TxBuffer = [0x16, 0x7, 0x3, 0xFF, 0xFF, 0, 0x16]
 
 i2c.write_i2c_block_data(loc, 0x50, TxBuffer)  
 
-value_buffer = i2c.read_i2c_block_data(0x28, 0x51)
+value_buffer = i2c.read_i2c_block_data(loc, 0x51)
 
-for i in range(0, 32) :
-    print(value_buffer[i])
+print(value_buffer)
     
 
 pm1p0_grimm = (value_buffer[7] << 8 + value_buffer[8])
