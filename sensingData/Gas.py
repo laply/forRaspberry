@@ -1,11 +1,11 @@
 import datetime
-import PCM3208
+import MCP3208
 # detect
 
 class Control:
 
 	def __init__(self, pin, topic, topicNum):
-		self.gas_instance = PCM3208.MCP3208(pin)
+		self.gas_instance = MCP3208.MCP3208(pin)
 		self.topic = topic
 		self.topicNum = topicNum
 
