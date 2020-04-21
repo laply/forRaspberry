@@ -47,16 +47,15 @@ class Control:
         pm2p5 = result[0]
         pm10 = result[1]
 
-        self.lastdata[0] = pm2p5
-        self.lastdata[1] = pm10
+        self.lastdata[0] = pm10
+        self.lastdata[1] = pm2p5
 
-        if self.tHCount == 5 :
-            self.topic.setSendMessageTopic(0, self.pm10TopicNum, pm2p5)
-            self.topic.setSendMessageTopic(0, self.pm2p5TopicNum, pm10)
-            self.tHCount = 0
-            print("MQTT-send - " + pm2p5)
-            print("MQTT-send - " + pm10)
-            self.tHCount += 1
+        self.topic.setSendMessageTopic(0, self.pm10TopicNum, pm10)
+        self.topic.setSendMessageTopic(0, self.pm2p5TopicNum, pm2p5)
+
+        print("MQTT-send - " + pm2p5)
+        print("MQTT-send - " + pm10)
+
 
 	def getNowData(self):
 		self.topic.setSendMessageTopic(0, self.tempTopicNum, self.lastdata[0])
