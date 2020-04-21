@@ -23,4 +23,4 @@ pm1p0_tsi = value_buffer[13] << 8 + value_buffer[14]
 pm2p5_tsi = value_buffer[15] << 8 + value_buffer[16]
 pm10_tsi = value_buffer[16] << 8 + value_buffer[18]
 
-print("pm1p0_grimm: " + pm1p0_grimm)
+print("pm1p0_grimm: %f "  % (pm1p0_grimm))
