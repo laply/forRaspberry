@@ -36,8 +36,8 @@ class Control:
     def __init__(self, topic, topicNum):
         self.pm2008m_instance = PM2008M()
         self.topic = topic
-        self.pm10TopicNum = topicNum[3]
-        self.pm2p5TopicNum = topicNum[4]
+        self.pm10TopicNum = topicNum[0]
+        self.pm2p5TopicNum = topicNum[1]
         self.detectCheckLastTime = ""
         self.lastdata = ["", ""]
         self.tHCount = 0
