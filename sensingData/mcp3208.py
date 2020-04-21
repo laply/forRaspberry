@@ -16,3 +16,4 @@ class MCP3208 :
 
     def getVoltage(self, read) :
         return read * 3.3 / 1024
+        
