@@ -5,7 +5,7 @@ brokerIpPort = ["124.139.136.86", "1883"]
 cameraGlobalport = "8891"
 cameraLocalport = "8891"
 
-useSensor = [True, True, True, True, False, False, True, True, True ]
+useSensor = [True, 0, 0, 0, 1, 0, True, True, True, 1]
  # dht11 / fire / shock / ir / gas / cds / button / led / motor / pm2008
 
 
