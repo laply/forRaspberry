@@ -3,11 +3,11 @@ import time
 
 i2c = smbus.SMBus(1)
 loc = 0x28
-TxBuffer = [0x11, 0x02, 0x0B, 0x07, 0xDB] 
+TxBuffer = [0x16, 0x7, 0x3, 0xFF, 0xFF, 0, 0x16] 
 
-i2c.write_i2c_block_data(loc, 0x16, TxBuffer)  
+i2c.write_i2c_block_data(loc, 0x50, TxBuffer)  
 
-value_buffer = i2c.read_i2c_block_data(0x28, 0x16)
+value_buffer = i2c.read_i2c_block_data(0x28, 0x51)
 
 for i in range(0, 32) :
     print(value_buffer[i])
