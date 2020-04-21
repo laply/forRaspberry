@@ -35,6 +35,10 @@ class Sensing :
 		self.sensorTimerControl = []
 		self.sensorDetectControl = []
 		self.sensorMoveControl = []
+
+		self.sensorTimerControlIndex = []
+		self.sensorDetectControlIndex = []
+
 		
 		self.setInstance(GPIO)
 		self.receive = receive.Receive([self.sensorTimerControl, self.sensorDetectControl, self.sensorMoveControl], self.cameraIpPort, self.topic)
