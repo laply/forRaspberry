@@ -15,8 +15,8 @@ class SG90:
         self.p1 = self.GPIO.PWM(self.pin_motor1, 50)
         self.p2 = self.GPIO.PWM(self.pin_motor2, 50)
 
-        self.p1.start(0)
-        self.p2.start(0)
+        self.p1.start(7.5)
+        self.p2.start(7.5)
 
         self.p1.ChangeDutyCycle(self.loc1)
         self.p2.ChangeDutyCycle(self.loc2)
@@ -29,8 +29,6 @@ class SG90:
 
 
     def afterUse(self):
-        self.p1.stop()
-        self.p2.stop()
         self.GPIO.setup(self.pin_motor1, self.GPIO.IN)
         self.GPIO.setup(self.pin_motor2, self.GPIO.IN)
 
@@ -39,9 +37,6 @@ class SG90:
 
     def write(self, i):
         self.beforeUse()
-        
-        self.p1.start(0)
-        self.p2.start(0)
 
         if i == 0 : # plus
             if self.loc1 != 10.5:
