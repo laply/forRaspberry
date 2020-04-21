@@ -9,6 +9,14 @@ class SG90:
         self.setting()
 
     def setting(self):
+
+        self.beforeUse()
+        self.p1.ChangeDutyCycle(self.loc1)
+        self.p2.ChangeDutyCycle(self.loc2)
+        self.afterUse()
+        
+
+    def beforeUse(self):
         self.GPIO.setup(self.pin_motor1, self.GPIO.OUT)
         self.GPIO.setup(self.pin_motor2, self.GPIO.OUT)
 
@@ -17,11 +25,16 @@ class SG90:
 
         self.p1.start(0)
         self.p2.start(0)
-        self.p1.ChangeDutyCycle(self.loc1)
-        self.p2.ChangeDutyCycle(self.loc2)
         
-    def write(self, i):
+    def afterUse(self):
+        self.GPIO.setup(self.pin_motor1, self.GPIO.IN)
+        self.GPIO.setup(self.pin_motor2, self.GPIO.IN)
 
+
+
+
+    def write(self, i):
+        self.beforeUse()
         if i == 0 : # plus
             if self.loc1 != 10.5:
                 self.loc1 = self.loc1 + 1
@@ -38,3 +51,4 @@ class SG90:
             if self.loc2 != 12.5:
                 self.loc2 = self.loc2 + 1    
             self.p2.ChangeDutyCycle(self.loc2)
+        self.afterUse()
