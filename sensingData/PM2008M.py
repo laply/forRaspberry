@@ -53,8 +53,8 @@ class Control:
         self.topic.setSendMessageTopic(0, self.pm10TopicNum, pm10)
         self.topic.setSendMessageTopic(0, self.pm2p5TopicNum, pm2p5)
 
-        print("MQTT-send - " + pm2p5)
-        print("MQTT-send - " + pm10)
+        print("MQTT-send - %f" % (pm2p5))
+        print("MQTT-send - %f" % (pm10))
 
 
 	def getNowData(self):
