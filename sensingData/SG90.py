@@ -43,5 +43,5 @@ class SG90:
                 self.loc2 = self.loc2 + 1    
             self.p2.ChangeDutyCycle(self.loc2)
 
-        p1.stop()
-        p2.stop()
+        self.p1.stop()
+        self.p2.stop()
