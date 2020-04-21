@@ -7,8 +7,8 @@ class PM2008M :
     TxBuffer = [0x16, 0x7, 0x3, 0xFF, 0xFF, 0, 0x16] 
 
     def read(self) :
-        i2c.write_i2c_block_data(loc, 0x50, TxBuffer) 
-        self.value_buffer = i2c.read_i2c_block_data(loc, 0x51)
+        self.i2c.write_i2c_block_data(self.loc, 0x50, self.TxBuffer) 
+        value_buffer = self.i2c.read_i2c_block_data(self.loc, 0x51)
         
         if value_buffer[1] == 32 and value_buffer[0] == 0x16 :
             self.pm2p5_grimm = (value_buffer[9] << 8) + value_buffer[10]
