@@ -36,6 +36,6 @@ class Control:
 			print("MQTT-send - " + "cds")
 			return True
 
-
+	
 	def getNowData(self):
 			self.topic.setSendMessageTopic(0, self.topicNum, self.lastdata)
