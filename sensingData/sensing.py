@@ -75,13 +75,14 @@ class Sensing :
 					self.led_instance.write(0)
 	
 			# cds camera Control
-			if self.ButtonUpDown :
-				if self.useSensor[6] and self.button_instance.clearButtonUp(self.sensorDetectControl):
-					self.led_instance.write(1)
-			else :
-				if self.useSensor[6] and self.button_instance.clearButtonDown(self.sensorDetectControl):
-					self.led_instance.write(1)
-			
+			if self.useSensor[6] :
+				if self.ButtonUpDown : 
+					if self.button_instance.clearButtonUp(self.sensorDetectControl, self.sensorDetectControlIndex):
+						self.led_instance.write(1)
+				else :
+					if self.button_instance.clearButtonDown(self.sensorDetectControl, self.sensorDetectControlIndex ):
+						self.led_instance.write(1)
+
 			if self.reciveControl :
 				self.reciveControl = False 
 				self.led_instance.write(1)
