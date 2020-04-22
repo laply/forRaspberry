@@ -76,8 +76,8 @@ class Sensing :
 		if self.useSensor[9] :
 			self.sensorTimerControl.append(PM2008M.Control(self.topic,[3, 4]))
 			self.sensorTimerControlIndex.append(3)
-			self.sensorTimerControlIndex.append(4)   			
-
+			self.sensorTimerControlIndex.append(4)
+			
 	def sensingStart(self):
 		self.sensingList()
 		self.reciveControl = self.receive.getData(self.raspid)

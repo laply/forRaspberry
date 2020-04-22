@@ -190,7 +190,7 @@ class Control:
 			self.lastdata[0] = temp
 			self.lastdata[1] = humid
 
-			if(self.tHCount == 5):
+			if(self.tHCount == 3):
 				self.topic.setSendMessageTopic(0, self.tempTopicNum, temp)
 				self.topic.setSendMessageTopic(0, self.humidTopicNum, humid)
 				self.tHCount = 0
