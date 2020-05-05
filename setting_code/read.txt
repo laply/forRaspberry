@@ -1,0 +1,10 @@
+>> How to setting 
+
+nano raspi-config
+
+>> index 5 
+SPI / I2C / camera
+>> set inable 
+
+sh inin.sh
+
