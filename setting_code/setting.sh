@@ -1,7 +1,6 @@
-#! /bin/bash
+#!/usr/bin/env bash
 
-if [$1 == 0]
-then
+if [$1==0]; then
 echo "[start Tcs sensing setting at pi]"
 echo "[network setting]"
 sudo rm /etc/wpa_supplicant/wpa_supplicant.conf
@@ -9,7 +8,7 @@ sudo cp wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 sed -e "19 i/sudo sh ${pwd}/setting.sh 1 &" /etc/rc.local
 
-elif [$1 == 1]
+elif [$1==1]; then
 echo "[init setting install]"
 sudo apt-get update
 sudo apt-get upgrade
