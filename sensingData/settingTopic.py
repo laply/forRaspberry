@@ -10,8 +10,7 @@ onOffTopic = ["tcs/rasp/onOff"]
 
 sendTopic = [sensorTimerTopic, sensorDetectTopic, IpPortTopic, onOffTopic]
 
-TakeTopic = ["tcs/com", "tcs/phone", "tcs/detectServer", "tcs/rasp/move"]
-
+TakeTopic = ["tcs/com", "tcs/phone", "tcs/detectServer", "tcs/rasp/move", "tcs/change"]
 computerMessage = ["start", "get", "ipPort", "ok", "reboot"]
 phoneMessage = ["start", "get", "ipPort", "ok", "reboot"]
 detectServerMessage = ["start", "ipPort", "true", "dStart", "dEnd"]

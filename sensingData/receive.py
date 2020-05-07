@@ -1,4 +1,6 @@
 import os
+import setting
+
 class Receive:
 	def __init__(self, sensorControl, cameraIpPort, topic):
 		self.sensorControl = sensorControl
@@ -43,6 +45,8 @@ class Receive:
 			self.senderIsDServer(senderData[1])
 		elif senderData[0] == 3:
 			self.senderIsMove(senderData[1])
+		elif senderData[0] == 4:
+    			self.idChange(senderData[1])
 
 	def senderIsCom(self, senderMesaage):
 		print("sender is com")
@@ -120,3 +124,7 @@ class Receive:
 		print("sender send to Move")
 		if self.sensorControl[2] != []:
 			self.sensorControl[2][0].write(senderMesaage)
+			
+	def idChange(self, senderMesaage):
+		print("ID Change")
+		setting.raspid = senderMesaage
