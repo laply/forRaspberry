@@ -79,7 +79,7 @@ class Sensing :
 			self.sensorTimerControlIndex.append(4)
 		if self.useSensor[10] :		
 			self.sensorTimerControl.append(Sound.Control(self.adc_pin[1], GPIO, self.topic, 5))
-			self.sensorTimerControlIndex.append(2)
+			self.sensorTimerControlIndex.append(5)
 			
 	def sensingStart(self):
 		self.sensingList()

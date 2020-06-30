@@ -61,4 +61,4 @@ class Control:
 		self.state == False
 
 	def getNowData(self):
-		self.topic.setSendMessageTopic(1, self.topicNum, self.detectCheck)
+		self.topic.setSendMessageTopic(0, self.topicNum, self.detectCheck)
