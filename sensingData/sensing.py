@@ -11,13 +11,13 @@ import Fire
 import Cds
 import IR
 
+import Sound
 import Gas
 import Button
 import LED
 import SG90
 
 class Sensing :
-
 	def __init__(self, GPIO, allIpPort, raspid, sensordata):
 		print("sensing init")
 		self.tHCount = 0
@@ -77,6 +77,9 @@ class Sensing :
 			self.sensorTimerControl.append(PM2008M.Control(self.topic,[3, 4]))
 			self.sensorTimerControlIndex.append(3)
 			self.sensorTimerControlIndex.append(4)
+		if self.useSensor[10] :		
+			self.sensorTimerControl.append(Sound.Control(self.adc_pin[1], GPIO, self.topic, 5))
+			self.sensorTimerControlIndex.append(2)
 			
 	def sensingStart(self):
 		self.sensingList()
